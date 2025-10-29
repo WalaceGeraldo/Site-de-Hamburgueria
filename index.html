@@ -12,56 +12,48 @@
         <div class="container">
             <h1 class="logo">The Burguer co.</h1>
             <nav class="main-nav">
-                <ul>
+                 <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="cardapio.html">Cardápio</a></li>
-                    <li><a href="cadastro.html">Cadastro</a></li>
-                    <li><a href="login.html" class="btn-login">Login</a></li>
+
+                    <li id="nav-cadastro"><a href="cadastro.html">Cadastro</a></li>
+                    <li id="nav-login"><a href="login.html" class="btn-login">Login</a></li>
+
+                    <li id="nav-user" style="display: none;"> <span id="user-email" style="color: #ccc; margin-right: 15px;"></span> </li>
+                    <li id="nav-logout" style="display: none;"> <a href="#" id="logout-button" class="btn-logout">Sair</a> </li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <section class="hero-banner">
-        </section>
+    </section>
 
     <section class="menu-section">
         <div class="container">
             <h2 class="section-title">NOSSO MENU</h2>
-            
             <p class="section-description">
                 Conheça nossas criações. De clássicos suculentos a opções veganas inovadoras, cada hambúrguer é uma experiência única.
             </p>
-
             <div class="menu-cards">
-                
                 <div class="menu-card">
                     <img src="imagens/menu-1.png" alt="Hambúrgueres Clássicos">
                     <h3>CLÁSSICOS IRRESISTÍVEIS</h3>
-                    <p class="card-description">
-                        A pura essência do hambúrguer: carne na brasa, queijo derretido e pão fresquinho.
-                    </p>
-                    <a href="#" class="btn-menu">VER CLÁSSICOS</a>
+                    <p class="card-description">A pura essência do hambúrguer: carne na brasa, queijo derretido e pão fresquinho.</p>
+                    <a href="cardapio.html" class="btn-menu">VER CLÁSSICOS</a>
                 </div>
-
                 <div class="menu-card">
                     <img src="imagens/menu-2.png" alt="Acompanhamentos Perfeitos">
                     <h3>ACOMPANHAMENTOS PERFEITOS</h3>
-                    <p class="card-description">
-                        Nossas batatas crocantes, anéis de cebola e molhos especiais para completar seu pedido.
-                    </p>
-                    <a href="#" class="btn-menu">VER ACOMPANHAMENTO</a>
+                    <p class="card-description">Nossas batatas crocantes, anéis de cebola e molhos especiais para completar seu pedido.</p>
+                    <a href="cardapio.html" class="btn-menu">VER ACOMPANHAMENTO</a>
                 </div>
-
                 <div class="menu-card">
                     <img src="imagens/menu-3.png" alt="Vegetarianos & Veganos">
                     <h3>VEGETARIANOS & VEGANOS</h3>
-                    <p class="card-description">
-                        Sabores incríveis em receitas 100% vegetais que vão surpreender você.
-                    </p>
-                    <a href="#" class="btn-menu">VER VEGGIE</a>
+                    <p class="card-description">Sabores incríveis em receitas 100% vegetais que vão surpreender você.</p>
+                    <a href="cardapio.html" class="btn-menu">VER VEGGIE</a>
                 </div>
-
             </div>
         </div>
     </section>
@@ -70,9 +62,7 @@
         <div class="container">
             <h2 class="section-title">Nossa História</h2>
             <div class="history-content">
-                <div class="history-image" id="historyImage">
-                    
-</div>
+                <div class="history-image" id="historyImage"></div>
                 <div class="history-text">
                     <div class="decorator-line"></div>
                     <h3>A PAIXÃO POR TRÁS DE CADA MORDIDA</h3>
@@ -88,7 +78,7 @@
             <p>RECEBA SEU PEDIDO QUENTINHO EM CASA OU RETIRE NA LOJA</p>
             <div class="order-buttons">
                 <a href="#" class="btn-order-primary">FAZER PEDIDO ONLINE</a>
-                <a href="#" class="btn-order-secondary">VER CARDÁPIO COMPLETO</a>
+                <a href="cardapio.html" class="btn-order-secondary">VER CARDÁPIO COMPLETO</a>
             </div>
         </div>
     </section>
@@ -109,62 +99,48 @@
 
     <section class="newsletter-section">
         <div class="container">
-            
             <div class="newsletter-text">
                 <p>"Não fique de fora do nosso mundo de sabores! Cadastre-se agora e receba em primeira mão nossas promoções exclusivas, lançamentos do cardápio e convites para eventos especiais."</p>
             </div>
-
             <div class="newsletter-form-container">
-                <form action="#" method="POST">
-                    
-                    <h3 class="form-title">Cadastre-se</h3>
-
+                <form action="#" method="POST"> <h3 class="form-title">Cadastre-se</h3>
                     <div class="form-group">
-                        <label for="nome">Nome:</label>
-                        <input type="text" id="nome" name="nome">
+                        <label for="nome-news">Nome:</label>
+                        <input type="text" id="nome-news" name="nome">
                     </div>
-                    
                     <div class="form-group">
-                        <label for="sobrenome">Sobrenome:</label>
-                        <input type="text" id="sobrenome" name="sobrenome">
+                        <label for="sobrenome-news">Sobrenome:</label>
+                        <input type="text" id="sobrenome-news" name="sobrenome">
                     </div>
-                    
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email">
+                        <label for="email-news">Email:</label>
+                        <input type="email" id="email-news" name="email">
                     </div>
-                    
                     <div class="form-group">
-                        <label for="celular">Celular:</label>
-                        <input type="tel" id="celular" name="celular">
+                        <label for="celular-news">Celular:</label>
+                        <input type="tel" id="celular-news" name="celular">
                     </div>
-                    
                     <button type="submit" class="btn-submit">CADASTRE-SE</button>
-                    
                     <a href="#" class="privacy-link">Política de Privacidade</a>
                 </form>
             </div>
-
         </div>
     </section>
 
     <footer class="main-footer">
         <div class="container">
-            
             <div class="footer-col footer-logo">
                 <h3>THE BURGUER CO.</h3>
             </div>
-
             <div class="footer-col">
                 <h4>MAPA DO SITE</h4>
                 <ul>
-                    <li><a href="#">INÍCIO</a></li>
-                    <li><a href="#">CARDÁPIO</a></li>
+                    <li><a href="index.html">INÍCIO</a></li>
+                    <li><a href="cardapio.html">CARDÁPIO</a></li>
                     <li><a href="#">QUEM SOMOS</a></li>
-                    <li><a href="#">CADASTRO</a></li>
+                    <li><a href="cadastro.html">CADASTRO</a></li>
                 </ul>
             </div>
-
             <div class="footer-col">
                 <h4>SIGA-NOS NAS REDE SOCIAL</h4>
                 <div class="social-icons">
@@ -173,7 +149,6 @@
                     <a href="#"><img src="imagens/icon-whatsapp.png" alt="WhatsApp"></a>
                 </div>
             </div>
-
             <div class="footer-col">
                 <h4>PEDIDO ONLINE</h4>
                 <ul>
@@ -182,9 +157,68 @@
                     <li><span>LIGAR: (21) 99999-9999</span></li>
                 </ul>
             </div>
-
         </div>
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+
+    <script>
+      // --- SUA CONFIGURAÇÃO FIREBASE ---
+      const firebaseConfig = {
+        apiKey: "AIzaSyC92LK20GbKuIqJ34ol2gRXQ7HBaDo4Ojw",
+        authDomain: "the-burger-co-site.firebaseapp.com",
+        projectId: "the-burger-co-site",
+        storageBucket: "the-burger-co-site.appspot.com",
+        messagingSenderId: "264313917347",
+        appId: "1:264313917347:web:6913602d31678a3d451416"
+      };
+      // --- FIM DA CONFIGURAÇÃO ---
+
+      // Inicializar Firebase
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+
+      // --- LÓGICA PARA ATUALIZAR O CABEÇALHO (Adicionar em TODAS as páginas) ---
+      const navCadastro = document.getElementById('nav-cadastro');
+      const navLogin = document.getElementById('nav-login');
+      const navUser = document.getElementById('nav-user');
+      const navLogout = document.getElementById('nav-logout');
+      const userEmailSpan = document.getElementById('user-email');
+      const logoutButton = document.getElementById('logout-button');
+
+      auth.onAuthStateChanged((user) => {
+        if (user) {
+          console.log("Usuário logado:", user.email);
+          userEmailSpan.textContent = `Olá, ${user.email}`;
+          if(navCadastro) navCadastro.style.display = 'none';
+          if(navLogin) navLogin.style.display = 'none';
+          if(navUser) navUser.style.display = 'list-item';
+          if(navLogout) navLogout.style.display = 'list-item';
+        } else {
+          console.log("Usuário deslogado");
+          userEmailSpan.textContent = '';
+          if(navCadastro) navCadastro.style.display = 'list-item';
+          if(navLogin) navLogin.style.display = 'list-item';
+          if(navUser) navUser.style.display = 'none';
+          if(navLogout) navLogout.style.display = 'none';
+        }
+      });
+
+      if (logoutButton) {
+          logoutButton.addEventListener('click', (event) => {
+              event.preventDefault();
+              auth.signOut().then(() => {
+                  console.log('Usuário deslogado com sucesso.');
+                  alert('Você saiu da sua conta.');
+                  window.location.href = 'index.html'; // Volta para home após logout
+              }).catch((error) => {
+                  console.error('Erro ao fazer logout:', error);
+                  alert('Erro ao sair: ' + error.message);
+              });
+          });
+      }
+      // --- FIM DA LÓGICA DO CABEÇALHO ---
+    </script>
 </body>
 </html>

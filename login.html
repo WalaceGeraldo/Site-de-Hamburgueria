@@ -10,74 +10,162 @@
 
     <header class="main-header">
         <div class="container">
-            <h1 class="logo">The Burguer co.</h1> 
+            <h1 class="logo">The Burguer co.</h1>
             <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Início</a></li> 
+                 <ul>
+                    <li><a href="index.html">Início</a></li>
                     <li><a href="cardapio.html">Cardápio</a></li>
-                    <li><a href="cadastro.html">Cadastro</a></li> 
-                    <li><a href="login.html" class="btn-login">Login</a></li> </ul>
+                    <li id="nav-cadastro"><a href="cadastro.html">Cadastro</a></li>
+                    <li id="nav-login"><a href="login.html" class="btn-login">Login</a></li>
+                    <li id="nav-user" style="display: none;"><span id="user-email" style="color: #ccc; margin-right: 15px;"></span></li>
+                    <li id="nav-logout" style="display: none;"><a href="#" id="logout-button" class="btn-logout">Sair</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
-    <main class="login-section"> <div class="container">
-            <div class="login-form-container"> <h2 class="login-title">Acesse sua Conta</h2> <form action="#" method="POST">
-                    
-                    <div class="form-group-login"> <label for="email-login">Email:</label>
+    <main class="login-section">
+        <div class="container">
+            <div class="login-form-container">
+                <h2 class="login-title">Acesse sua Conta</h2>
+
+                <form id="loginForm">
+                    <div class="form-group-login">
+                        <label for="email-login">Email:</label>
                         <input type="email" id="email-login" name="email-login" required>
                     </div>
-                    
-                    <div class="form-group-login"> <label for="senha-login">Senha:</label>
+                    <div class="form-group-login">
+                        <label for="senha-login">Senha:</label>
                         <input type="password" id="senha-login" name="senha-login" required>
                     </div>
-
                     <a href="#" class="forgot-password-link">Esqueceu sua senha?</a>
-                    
-                    <button type="submit" class="btn-login-submit">Entrar</button> <p class="register-link"> Não tem uma conta? <a href="cadastro.html">Cadastre-se</a> 
-                    </p>
+                    <button type="submit" class="btn-login-submit">Entrar</button>
                 </form>
+
+                 <div class="divider"><span>OU</span></div>
+
+                 <button type="button" class="btn-google" id="btnGoogleLogin">
+                     <img src="imagens/icon-google.png" alt="Google icon">
+                     Entrar com Google
+                 </button>
+
+                <p class="register-link">
+                    Não tem uma conta? <a href="cadastro.html">Cadastre-se</a>
+                </p>
             </div>
         </div>
     </main>
 
     <footer class="main-footer">
         <div class="container">
-            
-            <div class="footer-col footer-logo">
-                <h3>THE BURGUER CO.</h3>
-            </div>
-
-            <div class="footer-col">
-                <h4>MAPA DO SITE</h4>
-                <ul>
-                    <li><a href="index.html">INÍCIO</a></li>
-                    <li><a href="#">CARDÁPIO</a></li>
-                    <li><a href="#">QUEM SOMOS</a></li>
-                    <li><a href="cadastro.html">CADASTRO</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>SIGA-NOS NAS REDE SOCIAL</h4>
-                <div class="social-icons">
-                    <a href="#"><img src="imagens/icon-facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="imagens/icon-instagram.png" alt="Instagram"></a>
-                    <a href="#"><img src="imagens/icon-whatsapp.png" alt="WhatsApp"></a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h4>PEDIDO ONLINE</h4>
-                <ul>
-                    <li><a href="#">IFOOD</a></li>
-                    <li><a href="#">WHATSAPP</a></li>
-                    <li><span>LIGAR: (21) 99999-9999</span></li>
-                </ul>
-            </div>
-
+            <div class="footer-col footer-logo"><h3>THE BURGUER CO.</h3></div>
+            <div class="footer-col"><h4>MAPA DO SITE</h4><ul><li><a href="index.html">INÍCIO</a></li><li><a href="cardapio.html">CARDÁPIO</a></li><li><a href="#">QUEM SOMOS</a></li><li><a href="cadastro.html">CADASTRO</a></li></ul></div>
+            <div class="footer-col"><h4>SIGA-NOS NAS REDE SOCIAL</h4><div class="social-icons"><a href="#"><img src="imagens/icon-facebook.png" alt="Facebook"></a><a href="#"><img src="imagens/icon-instagram.png" alt="Instagram"></a><a href="#"><img src="imagens/icon-whatsapp.png" alt="WhatsApp"></a></div></div>
+            <div class="footer-col"><h4>PEDIDO ONLINE</h4><ul><li><a href="#">IFOOD</a></li><li><a href="#">WHATSAPP</a></li><li><span>LIGAR: (21) 99999-9999</span></li></ul></div>
         </div>
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+
+    <script>
+      // --- SUA CONFIGURAÇÃO FIREBASE ---
+      const firebaseConfig = {
+        apiKey: "AIzaSyC92LK20GbKuIqJ34ol2gRXQ7HBaDo4Ojw", // CONFIRA SE ESTÁ CORRETO
+        authDomain: "the-burger-co-site.firebaseapp.com", // CONFIRA SE ESTÁ CORRETO
+        projectId: "the-burger-co-site", // CONFIRA SE ESTÁ CORRETO
+        storageBucket: "the-burger-co-site.appspot.com", // CONFIRA SE ESTÁ CORRETO
+        messagingSenderId: "264313917347", // CONFIRA SE ESTÁ CORRETO
+        appId: "1:264313917347:web:6913602d31678a3d451416" // CONFIRA SE ESTÁ CORRETO
+      };
+      // --- FIM DA CONFIGURAÇÃO ---
+
+      try { // Adicionado try...catch
+          // Inicializar Firebase
+          firebase.initializeApp(firebaseConfig);
+          const auth = firebase.auth();
+          const googleProvider = new firebase.auth.GoogleAuthProvider();
+
+          // --- Lógica do Formulário de Login (Email/Senha) ---
+          const loginForm = document.getElementById('loginForm');
+          if (loginForm) {
+              loginForm.addEventListener('submit', (event) => {
+                  event.preventDefault();
+                  const email = document.getElementById('email-login').value;
+                  const senha = document.getElementById('senha-login').value;
+                  if (!email || !senha) { alert('Por favor, preencha o email e a senha.'); return; }
+
+                  auth.signInWithEmailAndPassword(email, senha)
+                    .then((userCredential) => {
+                      alert('Login realizado com sucesso!');
+                      window.location.href = 'index.html';
+                    })
+                    .catch((error) => {
+                      console.error('Erro no login:', error.code, error.message);
+                      if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') { alert('E-mail ou senha incorretos.'); }
+                      else if (error.code === 'auth/invalid-email') { alert('Formato de e-mail inválido.'); }
+                      else { alert('Erro ao fazer login: ' + error.message); }
+                    });
+              });
+          }
+
+          // --- Lógica do Login com Google ---
+          const btnGoogleLogin = document.getElementById('btnGoogleLogin');
+          if (btnGoogleLogin) {
+              btnGoogleLogin.addEventListener('click', () => {
+                  auth.signInWithPopup(googleProvider)
+                    .then((result) => {
+                      alert('Login com Google realizado com sucesso!');
+                      window.location.href = 'index.html';
+                    }).catch((error) => {
+                      console.error('Erro no login com Google (login):', error.code, error.message);
+                      if (error.code !== 'auth/popup-closed-by-user') { alert('Erro ao tentar login com Google: ' + error.message); }
+                    });
+              });
+          }
+
+          // --- LÓGICA PARA ATUALIZAR O CABEÇALHO ---
+          const navCadastro = document.getElementById('nav-cadastro');
+          const navLogin = document.getElementById('nav-login');
+          const navUser = document.getElementById('nav-user');
+          const navLogout = document.getElementById('nav-logout');
+          const userEmailSpan = document.getElementById('user-email');
+          const logoutButton = document.getElementById('logout-button');
+
+          auth.onAuthStateChanged((user) => {
+             if (user) {
+              userEmailSpan.textContent = `Olá, ${user.email}`;
+              if(navCadastro) navCadastro.style.display = 'none';
+              if(navLogin) navLogin.style.display = 'none';
+              if(navUser) navUser.style.display = 'list-item';
+              if(navLogout) navLogout.style.display = 'list-item';
+            } else {
+              userEmailSpan.textContent = '';
+              if(navCadastro) navCadastro.style.display = 'list-item';
+              if(navLogin) navLogin.style.display = 'list-item';
+              if(navUser) navUser.style.display = 'none';
+              if(navLogout) navLogout.style.display = 'none';
+            }
+          });
+
+          if (logoutButton) {
+              logoutButton.addEventListener('click', (event) => {
+                  event.preventDefault();
+                  auth.signOut().then(() => {
+                      alert('Você saiu da sua conta.');
+                      window.location.href = 'index.html';
+                  }).catch((error) => {
+                      console.error('Erro ao fazer logout:', error);
+                      alert('Erro ao sair: ' + error.message);
+                  });
+              });
+          }
+          // --- FIM DA LÓGICA DO CABEÇALHO ---
+
+      } catch (e) {
+          console.error("Erro ao inicializar Firebase ou configurar listeners:", e);
+          alert("Ocorreu um erro crítico na página. Verifique o console.");
+      }
+    </script>
 </body>
 </html>

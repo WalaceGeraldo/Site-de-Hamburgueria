@@ -10,12 +10,15 @@
 
     <header class="main-header">
         <div class="container">
-            <h1 class="logo">The Burguer co.</h1> 
+            <h1 class="logo">The Burguer co.</h1>
             <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Início</a></li> 
-                    <li><a href="cardapio.html">Cardápio</a></li> <li><a href="cadastro.html">Cadastro</a></li> 
-                    <li><a href="login.html" class="btn-login">Login</a></li> 
+                 <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="cardapio.html">Cardápio</a></li>
+                    <li id="nav-cadastro"><a href="cadastro.html">Cadastro</a></li>
+                    <li id="nav-login"><a href="login.html" class="btn-login">Login</a></li>
+                    <li id="nav-user" style="display: none;"><span id="user-email" style="color: #ccc; margin-right: 15px;"></span></li>
+                    <li id="nav-logout" style="display: none;"><a href="#" id="logout-button" class="btn-logout">Sair</a></li>
                 </ul>
             </nav>
         </div>
@@ -30,7 +33,7 @@
                 <div class="menu-items-list">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                             <img src="imagens/burger-classic.png" alt="Classic Burger"> 
+                             <img src="imagens/burger-classic.png" alt="Classic Burger">
                         </div>
                         <div class="menu-item-details">
                             <h3>Classic Burger</h3>
@@ -40,7 +43,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                             <img src="imagens/burger-cheddar.png" alt="Cheddar Burger"> 
+                             <img src="imagens/burger-cheddar.png" alt="Cheddar Burger">
                         </div>
                         <div class="menu-item-details">
                             <h3>Cheddar Burger</h3>
@@ -50,7 +53,7 @@
                     </div>
                     <div class="menu-item">
                         <div class="menu-item-image">
-                             <img src="imagens/burger-bacon.png" alt="Bacon Supreme"> 
+                             <img src="imagens/burger-bacon.png" alt="Bacon Supreme">
                         </div>
                         <div class="menu-item-details">
                             <h3>Bacon Supreme</h3>
@@ -60,13 +63,13 @@
                     </div>
                      </div>
             </section>
-            
+
              <section class="menu-category">
                 <h2>Especiais da Casa</h2>
                 <div class="menu-items-list">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                             <img src="imagens/burger-gorgonzola.png" alt="Gorgon Burger"> 
+                             <img src="imagens/burger-gorgonzola.png" alt="Gorgon Burger">
                         </div>
                         <div class="menu-item-details">
                             <h3>Gorgon Burger</h3>
@@ -81,7 +84,7 @@
                 <h2>Acompanhamentos Perfeitos</h2>
                 <div class="menu-items-list">
                     <div class="menu-item">
-                         <div class="menu-item-details no-image"> 
+                         <div class="menu-item-details no-image">
                             <h3>Batatas Fritas</h3>
                             <p class="item-description">Porção generosa de batatas sequinhas e crocantes.</p>
                             <p class="item-price">R$ 15,00</p>
@@ -109,7 +112,7 @@
                 <div class="menu-items-list">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                             <img src="imagens/burger-veggie.png" alt="Veggie Burger"> 
+                             <img src="imagens/burger-veggie.png" alt="Veggie Burger">
                         </div>
                         <div class="menu-item-details">
                             <h3>Veggie Burger</h3>
@@ -119,7 +122,7 @@
                     </div>
                      <div class="menu-item">
                         <div class="menu-item-image">
-                             <img src="imagens/burger-cogumelo.png" alt="Shimeji Burger"> 
+                             <img src="imagens/burger-cogumelo.png" alt="Shimeji Burger">
                         </div>
                         <div class="menu-item-details">
                             <h3>Shimeji Burger (Vegano)</h3>
@@ -129,33 +132,33 @@
                     </div>
                      </div>
             </section>
-            
+
             <section class="menu-category">
                 <h2>Bebidas</h2>
                 <div class="menu-items-list">
                     <div class="menu-item">
-                         <div class="menu-item-details no-image"> 
+                         <div class="menu-item-details no-image">
                             <h3>Refrigerante Lata</h3>
                             <p class="item-description">Coca-Cola, Guaraná Antarctica, Fanta Laranja, Sprite (350ml).</p>
                             <p class="item-price">R$ 6,00</p>
                         </div>
                     </div>
                      <div class="menu-item">
-                        <div class="menu-item-details no-image"> 
+                        <div class="menu-item-details no-image">
                            <h3>Suco Natural</h3>
                            <p class="item-description">Laranja, Abacaxi com Hortelã, Maracujá (Copo 400ml).</p>
                            <p class="item-price">R$ 9,00</p>
                        </div>
                    </div>
                     <div class="menu-item">
-                        <div class="menu-item-details no-image"> 
+                        <div class="menu-item-details no-image">
                            <h3>Milk Shake</h3>
                            <p class="item-description">Chocolate, Morango, Ovomaltine (Copo 400ml).</p>
                            <p class="item-price">R$ 18,00</p>
                        </div>
                    </div>
                     <div class="menu-item">
-                        <div class="menu-item-details no-image"> 
+                        <div class="menu-item-details no-image">
                            <h3>Água Mineral</h3>
                            <p class="item-description">Com gás ou sem gás (500ml).</p>
                            <p class="item-price">R$ 4,00</p>
@@ -163,15 +166,15 @@
                    </div>
                      </div>
             </section>
-            
+
              <section class="menu-category">
                 <h2>Sobremesas</h2>
                 <div class="menu-items-list">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="imagens/sobremesa-brownie.png" alt="Brownie com Sorvete"> 
+                            <img src="imagens/sobremesa-brownie.png" alt="Brownie com Sorvete">
                        </div>
-                         <div class="menu-item-details"> 
+                         <div class="menu-item-details">
                             <h3>Brownie com Sorvete</h3>
                             <p class="item-description">Brownie quentinho de chocolate com nozes, servido com uma bola de sorvete de creme e calda de chocolate.</p>
                             <p class="item-price">R$ 22,00</p>
@@ -185,41 +188,80 @@
 
     <footer class="main-footer">
         <div class="container">
-            
-            <div class="footer-col footer-logo">
-                <h3>THE BURGUER CO.</h3>
-            </div>
-
-            <div class="footer-col">
-                <h4>MAPA DO SITE</h4>
-                <ul>
-                    <li><a href="index.html">INÍCIO</a></li>
-                    <li><a href="cardapio.html">CARDÁPIO</a></li>
-                    <li><a href="#">QUEM SOMOS</a></li>
-                    <li><a href="cadastro.html">CADASTRO</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <h4>SIGA-NOS NAS REDE SOCIAL</h4>
-                <div class="social-icons">
-                    <a href="#"><img src="imagens/icon-facebook.png" alt="Facebook"></a>
-                    <a href="#"><img src="imagens/icon-instagram.png" alt="Instagram"></a>
-                    <a href="#"><img src="imagens/icon-whatsapp.png" alt="WhatsApp"></a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h4>PEDIDO ONLINE</h4>
-                <ul>
-                    <li><a href="#">IFOOD</a></li>
-                    <li><a href="#">WHATSAPP</a></li>
-                    <li><span>LIGAR: (21) 99999-9999</span></li>
-                </ul>
-            </div>
-
+             <div class="footer-col footer-logo"><h3>THE BURGUER CO.</h3></div>
+            <div class="footer-col"><h4>MAPA DO SITE</h4><ul><li><a href="index.html">INÍCIO</a></li><li><a href="cardapio.html">CARDÁPIO</a></li><li><a href="#">QUEM SOMOS</a></li><li><a href="cadastro.html">CADASTRO</a></li></ul></div>
+            <div class="footer-col"><h4>SIGA-NOS NAS REDE SOCIAL</h4><div class="social-icons"><a href="#"><img src="imagens/icon-facebook.png" alt="Facebook"></a><a href="#"><img src="imagens/icon-instagram.png" alt="Instagram"></a><a href="#"><img src="imagens/icon-whatsapp.png" alt="WhatsApp"></a></div></div>
+            <div class="footer-col"><h4>PEDIDO ONLINE</h4><ul><li><a href="#">IFOOD</a></li><li><a href="#">WHATSAPP</a></li><li><span>LIGAR: (21) 99999-9999</span></li></ul></div>
         </div>
     </footer>
 
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+
+    <script>
+      // --- SUA CONFIGURAÇÃO FIREBASE ---
+      const firebaseConfig = {
+        apiKey: "AIzaSyC92LK20GbKuIqJ34ol2gRXQ7HBaDo4Ojw", // CONFIRA SE ESTÁ CORRETO
+        authDomain: "the-burger-co-site.firebaseapp.com", // CONFIRA SE ESTÁ CORRETO
+        projectId: "the-burger-co-site", // CONFIRA SE ESTÁ CORRETO
+        storageBucket: "the-burger-co-site.appspot.com", // CONFIRA SE ESTÁ CORRETO
+        messagingSenderId: "264313917347", // CONFIRA SE ESTÁ CORRETO
+        appId: "1:264313917347:web:6913602d31678a3d451416" // CONFIRA SE ESTÁ CORRETO
+      };
+      // --- FIM DA CONFIGURAÇÃO ---
+
+      try {
+          // Inicializar Firebase
+          firebase.initializeApp(firebaseConfig);
+          const auth = firebase.auth();
+          // Não precisamos do googleProvider aqui, a menos que adicione um botão Google nesta página
+
+          // --- LÓGICA PARA ATUALIZAR O CABEÇALHO ---
+          const navCadastro = document.getElementById('nav-cadastro');
+          const navLogin = document.getElementById('nav-login');
+          const navUser = document.getElementById('nav-user');
+          const navLogout = document.getElementById('nav-logout');
+          const userEmailSpan = document.getElementById('user-email');
+          const logoutButton = document.getElementById('logout-button');
+
+          auth.onAuthStateChanged((user) => {
+            console.log("Auth state changed on cardapio.html:", user); // Log para depuração
+            if (user) {
+              // Usuário está logado
+              userEmailSpan.textContent = `Olá, ${user.email}`;
+              if(navCadastro) navCadastro.style.display = 'none';
+              if(navLogin) navLogin.style.display = 'none';
+              if(navUser) navUser.style.display = 'list-item';
+              if(navLogout) navLogout.style.display = 'list-item';
+            } else {
+              // Usuário está deslogado
+              userEmailSpan.textContent = '';
+              if(navCadastro) navCadastro.style.display = 'list-item';
+              if(navLogin) navLogin.style.display = 'list-item';
+              if(navUser) navUser.style.display = 'none';
+              if(navLogout) navLogout.style.display = 'none';
+            }
+          });
+
+          // Lógica do botão Sair
+          if (logoutButton) {
+              logoutButton.addEventListener('click', (event) => {
+                  event.preventDefault();
+                  auth.signOut().then(() => {
+                      alert('Você saiu da sua conta.');
+                      window.location.href = 'index.html'; // Volta para home
+                  }).catch((error) => {
+                      console.error('Erro ao fazer logout:', error);
+                      alert('Erro ao sair: ' + error.message);
+                  });
+              });
+          }
+          // --- FIM DA LÓGICA DO CABEÇALHO ---
+
+      } catch (e) {
+          console.error("Erro ao inicializar Firebase ou configurar listeners em cardapio.html:", e);
+          alert("Ocorreu um erro crítico na página de cardápio. Verifique o console.");
+      }
+    </script>
 </body>
 </html>

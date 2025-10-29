@@ -1,4 +1,5 @@
-/* (Nenhuma alteração necessária aqui, apenas o CSS completo) */
+/* (Cole aqui o CSS completo da minha resposta anterior que incluía o .btn-logout) */
+/* Ele já está correto e não precisa de novas adições para esta etapa */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@400;700&display=swap');
 
 /* --- Resets Básicos e Configurações Globais --- */
@@ -28,7 +29,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: #f4f4
 .menu-cards { display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; }
 .menu-card { width: 360px; background-color: #fff; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); overflow: hidden; text-align: center; padding-bottom: 30px; transition: transform 0.3s ease, box-shadow 0.3s ease; }
 .menu-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.15); }
-.menu-card img { width: 100%; display: block; }
+.menu-card img { width: 100%; display: block; height: 240px; object-fit: cover; }
 .menu-card h3 { font-size: 20px; margin: 25px 0 10px 0; color: #222; text-transform: uppercase; font-family: 'Oswald', sans-serif; }
 .card-description { font-size: 16px; color: #555; line-height: 1.6; padding: 0 25px; margin-bottom: 25px; min-height: 70px; }
 .btn-menu { display: inline-block; background-color: #d9a040; color: #000; padding: 12px 30px; text-decoration: none; font-weight: 700; border-radius: 4px; text-transform: uppercase; font-size: 14px; transition: background-color 0.3s ease, color 0.3s ease; }
@@ -68,7 +69,7 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: #f4f4
 #gallery-5 { background-image: url('imagens/galeria-5.png'); }
 #gallery-6 { background-image: url('imagens/galeria-6.png'); }
 
-/* --- Seção Cadastre-se (Newsletter) --- */
+/* --- Seção Cadastre-se (Newsletter Home) --- */
 .newsletter-section { padding: 80px 0; background-color: #fff; }
 .newsletter-text { text-align: center; margin-bottom: 40px; }
 .newsletter-text p { font-size: 19px; line-height: 1.7; color: #444; font-style: italic; max-width: 600px; margin: 0 auto; }
@@ -113,6 +114,14 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: #f4f4
 .login-link { text-align: center; margin-top: 25px; font-size: 15px; color: #555; }
 .login-link a { color: #d9a040; font-weight: 700; text-decoration: none; }
 .login-link a:hover { text-decoration: underline; }
+.divider { text-align: center; margin: 30px 0; color: #aaa; font-weight: bold; position: relative; }
+.divider::before, .divider::after { content: ''; display: inline-block; width: 40%; height: 1px; background-color: #ddd; vertical-align: middle; position: absolute; top: 50%; }
+.divider::before { left: 0; }
+.divider::after { right: 0; }
+.divider span { display: inline-block; background-color: #f9f9f9; padding: 0 10px; position: relative; z-index: 1; }
+.btn-google { display: flex; align-items: center; justify-content: center; width: 100%; padding: 12px; background-color: #fff; color: #444; border: 1px solid #ccc; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background-color 0.3s ease, box-shadow 0.3s ease; font-family: 'Montserrat', sans-serif; margin-bottom: 25px; }
+.btn-google img { width: 20px; height: 20px; margin-right: 10px; }
+.btn-google:hover { background-color: #eee; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
 /* --- Estilos da Página de Login --- */
 .login-section { padding: 60px 0; background-color: #fff; min-height: calc(100vh - 65px - 269px); display: flex; align-items: center; }
@@ -129,18 +138,39 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: #f4f4
 .register-link { text-align: center; margin-top: 25px; font-size: 15px; color: #555; }
 .register-link a { color: #d9a040; font-weight: 700; text-decoration: none; }
 .register-link a:hover { text-decoration: underline; }
+.login-form-container .btn-google { margin-top: 0; }
 
 /* --- Estilos da Página do Cardápio --- */
 .cardapio-section { padding: 60px 0; background-color: #fff; }
 .page-title { text-align: center; color: #333; font-family: 'Oswald', sans-serif; font-size: 42px; text-transform: uppercase; margin: 0 0 50px 0; letter-spacing: 1px; }
 .menu-category { margin-bottom: 50px; }
 .menu-category h2 { font-family: 'Oswald', sans-serif; font-size: 28px; color: #d9a040; text-transform: uppercase; margin-bottom: 30px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
-.menu-item { display: flex; gap: 25px; margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; /* Responsividade */}
+.menu-item { display: flex; gap: 25px; margin-bottom: 30px; padding-bottom: 30px; border-bottom: 1px solid #f0f0f0; flex-wrap: wrap; }
 .menu-items-list .menu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 .menu-item-image { flex-basis: 150px; flex-shrink: 0; }
 .menu-item-image img { width: 100%; height: 120px; object-fit: cover; border-radius: 6px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); }
-.menu-item-details { flex: 1; display: flex; flex-direction: column; min-width: 250px; /* Para evitar que esprema muito */}
-.menu-item-details.no-image { /* Estilos específicos se não houver imagem */}
+.menu-item-details { flex: 1; display: flex; flex-direction: column; min-width: 250px; }
+.menu-item-details.no-image {}
 .menu-item-details h3 { font-family: 'Oswald', sans-serif; font-size: 20px; color: #333; margin: 0 0 8px 0; text-transform: uppercase; }
 .item-description { font-size: 16px; color: #555; margin: 0 0 10px 0; flex-grow: 1; }
 .item-price { font-size: 18px; font-weight: 700; color: #d9a040; margin: 0; margin-top: auto; text-align: right; }
+
+/* --- Estilo do Botão Sair --- */
+.btn-logout {
+    display: inline-block;
+    background-color: #dc3545; /* Vermelho */
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.btn-logout:hover {
+    background-color: #c82333; /* Vermelho mais escuro */
+    color: #fff;
+}
