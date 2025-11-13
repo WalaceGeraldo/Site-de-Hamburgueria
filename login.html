@@ -86,28 +86,58 @@
           const auth = firebase.auth();
           const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-          // --- Lógica do Formulário de Login (Email/Senha) ---
-          const loginForm = document.getElementById('loginForm');
-          if (loginForm) {
-              loginForm.addEventListener('submit', (event) => {
-                  event.preventDefault();
-                  const email = document.getElementById('email-login').value;
-                  const senha = document.getElementById('senha-login').value;
-                  if (!email || !senha) { alert('Por favor, preencha o email e a senha.'); return; }
+                    // --- Lógica do Formulário de Login (Email/Senha) ---
+                    const loginForm = document.getElementById('loginForm');
+                    if (loginForm) {
+                            loginForm.addEventListener('submit', async (event) => {
+                                    event.preventDefault();
+                                    const email = document.getElementById('email-login').value;
+                                    const senha = document.getElementById('senha-login').value;
+                                    if (!email || !senha) { alert('Por favor, preencha o email e a senha.'); return; }
 
-                  auth.signInWithEmailAndPassword(email, senha)
-                    .then((userCredential) => {
-                      alert('Login realizado com sucesso!');
-                      window.location.href = 'index.html';
-                    })
-                    .catch((error) => {
-                      console.error('Erro no login:', error.code, error.message);
-                      if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') { alert('E-mail ou senha incorretos.'); }
-                      else if (error.code === 'auth/invalid-email') { alert('Formato de e-mail inválido.'); }
-                      else { alert('Erro ao fazer login: ' + error.message); }
-                    });
-              });
-          }
+                                    // Tentar login no servidor local
+                                    try {
+                                            const resp = await fetch('/api/login', {
+                                                    method: 'POST',
+                                                    headers: { 'Content-Type': 'application/json' },
+                                                    body: JSON.stringify({ email, password: senha })
+                                            });
+                                            const data = await resp.json();
+                                            if (resp.ok && data.success) {
+                                                    localStorage.setItem('authToken', data.token);
+                                                    localStorage.setItem('authEmail', data.email);
+                                                    if (data.name) localStorage.setItem('authName', data.name);
+                                                    alert('Login realizado com sucesso! (servidor local)');
+                                                    window.location.href = 'index.html';
+                                                    return;
+                                            } else {
+                                                    console.warn('Login local retornou erro:', data);
+                                                    if (data && data.message) alert('Erro no login local: ' + data.message);
+                                                    // fallback below
+                                            }
+                                    } catch (e) {
+                                            console.warn('Servidor local não disponível, tentando Firebase...', e);
+                                    }
+
+                                    // Fallback: Firebase
+                                    try {
+                                            auth.signInWithEmailAndPassword(email, senha)
+                                                .then((userCredential) => {
+                                                    alert('Login realizado com sucesso (Firebase)!');
+                                                    window.location.href = 'index.html';
+                                                })
+                                                .catch((error) => {
+                                                    console.error('Erro no login (Firebase):', error.code, error.message);
+                                                    if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') { alert('E-mail ou senha incorretos.'); }
+                                                    else if (error.code === 'auth/invalid-email') { alert('Formato de e-mail inválido.'); }
+                                                    else { alert('Erro ao fazer login: ' + error.message); }
+                                                });
+                                    } catch (e) {
+                                            console.error('Erro ao tentar login:', e);
+                                            alert('Erro ao tentar login. Verifique o console.');
+                                    }
+                            });
+                    }
 
           // --- Lógica do Login com Google ---
           const btnGoogleLogin = document.getElementById('btnGoogleLogin');

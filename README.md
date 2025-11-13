@@ -51,6 +51,26 @@ npx http-server -p 8000
 http://localhost:8000
 ```
 
+### Servidor local de autenticação (opcional)
+
+Este repositório inclui um pequeno servidor Node.js (Express + SQLite) para testes locais de registro/login. Ele escuta por padrão na porta `3000` e expõe os endpoints:
+
+- `POST /api/register` — registrar usuário (body: `name`, `email`, `password`)
+- `POST /api/login` — autenticar usuário (body: `email`, `password`)
+- `GET /api/me` — obter dados do usuário a partir do token (Authorization: `Bearer <token>`)
+
+Para rodar o servidor local (necessita Node.js >= 14):
+
+```powershell
+cd Site-de-Hamburgueria
+npm install
+npm start
+
+# O servidor ficará disponível em http://localhost:3000
+```
+
+As páginas do site já tentam usar esse servidor automaticamente (primeiro tentam `/api/*`, e caso o servidor não esteja disponível, há um fallback para Firebase). Os tokens retornados pelo servidor são salvos em `localStorage`.
+
 ---
 
 ## 📁 Estrutura do Projeto

@@ -93,31 +93,65 @@
           const auth = firebase.auth();
           const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-          // --- Lógica do Formulário de Cadastro (Email/Senha) ---
-          const cadastroForm = document.getElementById('cadastroForm');
-          if (cadastroForm) {
-              cadastroForm.addEventListener('submit', (event) => {
-                  event.preventDefault();
-                  const email = document.getElementById('email-cadastro').value;
-                  const senha = document.getElementById('senha-cadastro').value;
-                  const confirmarSenha = document.getElementById('confirmar-senha').value;
+                    // --- Lógica do Formulário de Cadastro (Email/Senha) ---
+                    const cadastroForm = document.getElementById('cadastroForm');
+                    if (cadastroForm) {
+                            cadastroForm.addEventListener('submit', async (event) => {
+                                    event.preventDefault();
+                                    const name = document.getElementById('nome-completo').value;
+                                    const email = document.getElementById('email-cadastro').value;
+                                    const senha = document.getElementById('senha-cadastro').value;
+                                    const confirmarSenha = document.getElementById('confirmar-senha').value;
 
-                  if (senha !== confirmarSenha) { alert("As senhas não coincidem!"); return; }
-                  if (senha.length < 6) { alert("A senha deve ter pelo menos 6 caracteres."); return; }
+                                    if (senha !== confirmarSenha) { alert("As senhas não coincidem!"); return; }
+                                    if (senha.length < 6) { alert("A senha deve ter pelo menos 6 caracteres."); return; }
 
-                  auth.createUserWithEmailAndPassword(email, senha)
-                    .then((userCredential) => {
-                      alert('Cadastro realizado com sucesso!');
-                      window.location.href = 'login.html';
-                    })
-                    .catch((error) => {
-                      console.error('Erro no cadastro:', error.code, error.message);
-                      if (error.code === 'auth/email-already-in-use') { alert('Este e-mail já está cadastrado.'); }
-                      else if (error.code === 'auth/weak-password') { alert('A senha deve ter pelo menos 6 caracteres.'); }
-                      else { alert('Erro ao cadastrar: ' + error.message); }
-                    });
-              });
-          }
+                                    // Tentar registrar no servidor local primeiro
+                                    try {
+                                            const resp = await fetch('/api/register', {
+                                                    method: 'POST',
+                                                    headers: { 'Content-Type': 'application/json' },
+                                                    body: JSON.stringify({ name, email, password: senha })
+                                            });
+                                            const data = await resp.json();
+                                            if (resp.ok && data.success) {
+                                                    // salvar token localmente e redirecionar
+                                                    localStorage.setItem('authToken', data.token);
+                                                    localStorage.setItem('authEmail', data.email);
+                                                    if (data.name) localStorage.setItem('authName', data.name);
+                                                    alert('Cadastro realizado com sucesso! (servidor local)');
+                                                    window.location.href = 'index.html';
+                                                    return;
+                                            } else {
+                                                    // Se servidor respondeu com erro conhecido, mostrar mensagem
+                                                    console.warn('Registro local retornou erro:', data);
+                                                    if (data && data.message) alert('Erro no registro local: ' + data.message);
+                                                    // fallback para Firebase abaixo
+                                            }
+                                    } catch (e) {
+                                            console.warn('Servidor local não disponível, tentando Firebase...', e);
+                                            // fallback para Firebase
+                                    }
+
+                                    // Fallback: registrar com Firebase se disponível
+                                    try {
+                                            auth.createUserWithEmailAndPassword(email, senha)
+                                                .then((userCredential) => {
+                                                    alert('Cadastro realizado com sucesso (Firebase)!');
+                                                    window.location.href = 'login.html';
+                                                })
+                                                .catch((error) => {
+                                                    console.error('Erro no cadastro (Firebase):', error.code, error.message);
+                                                    if (error.code === 'auth/email-already-in-use') { alert('Este e-mail já está cadastrado.'); }
+                                                    else if (error.code === 'auth/weak-password') { alert('A senha deve ter pelo menos 6 caracteres.'); }
+                                                    else { alert('Erro ao cadastrar: ' + error.message); }
+                                                });
+                                    } catch (e) {
+                                            console.error('Erro ao tentar registrar:', e);
+                                            alert('Erro ao tentar registrar. Verifique o console.');
+                                    }
+                            });
+                    }
 
           // --- Lógica do Login com Google (no cadastro) ---
           const btnGoogleSignIn = document.getElementById('btnGoogleSignIn');

@@ -241,6 +241,35 @@
                                 }
                             });
 
+                                // Atualização do header a partir da autenticação local (se existir)
+                                function updateHeaderFromLocalAuthCardapio(){
+                                    const navCadastro = document.getElementById('nav-cadastro');
+                                    const navLogin = document.getElementById('nav-login');
+                                    const navUser = document.getElementById('nav-user');
+                                    const navLogout = document.getElementById('nav-logout');
+                                    const userEmailSpan = document.getElementById('user-email');
+                                    const logoutButton = document.getElementById('logout-button');
+                                    const token = localStorage.getItem('authToken');
+                                    const email = localStorage.getItem('authEmail');
+                                    if (token && email){
+                                        if(userEmailSpan) userEmailSpan.textContent = `Olá, ${email}`;
+                                        if(navCadastro) navCadastro.style.display = 'none';
+                                        if(navLogin) navLogin.style.display = 'none';
+                                        if(navUser) navUser.style.display = 'list-item';
+                                        if(navLogout) navLogout.style.display = 'list-item';
+                                        if (logoutButton) {
+                                            logoutButton.addEventListener('click', (e) => {
+                                                e.preventDefault();
+                                                localStorage.removeItem('authToken');
+                                                localStorage.removeItem('authEmail');
+                                                localStorage.removeItem('authName');
+                                                window.location.href = 'index.html';
+                                            });
+                                        }
+                                    }
+                                }
+                                document.addEventListener('DOMContentLoaded', updateHeaderFromLocalAuthCardapio);
+
                             if (logoutButton) {
                                     logoutButton.addEventListener('click', (event) => {
                                             event.preventDefault();
