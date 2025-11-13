@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The Burguer co. — hambúrgueres artesanais, cardápio completo e promoções. Peça online ou visite nossa loja.">
     <title>The Burguer co.</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
     <header class="main-header">
         <div class="container">
             <h1 class="logo">The Burguer co.</h1>
-            <nav class="main-nav">
+            <button id="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">Menu</button>
+            <nav class="main-nav" id="primary-navigation">
                  <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="cardapio.html">Cardápio</a></li>
@@ -26,7 +32,22 @@
         </div>
     </header>
 
+    <main id="main">
     <section class="hero-banner">
+        <picture>
+            <source media="(max-width: 640px)" srcset="imagens/banner.png" type="image/png">
+            <img src="imagens/banner.png" alt="Hambúrgueres artesanais frescos" class="hero-bg-img" decoding="async">
+        </picture>
+        <div class="hero-overlay">
+            <div class="container hero-content">
+                <h2>O Melhor Hambúrguer da Cidade</h2>
+                <p>Ingredientes selecionados, pão feito na casa e um sabor que você não vai esquecer.</p>
+                <div class="hero-cta">
+                    <a href="cardapio.html" class="btn-order-primary">VER CARDÁPIO</a>
+                    <a href="#newsletter" class="btn-order-secondary">CADASTRE-SE</a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <section class="menu-section">
@@ -37,19 +58,19 @@
             </p>
             <div class="menu-cards">
                 <div class="menu-card">
-                    <img src="imagens/menu-1.png" alt="Hambúrgueres Clássicos">
+                    <img src="imagens/menu-1.png" alt="Hambúrgueres Clássicos" loading="lazy">
                     <h3>CLÁSSICOS IRRESISTÍVEIS</h3>
                     <p class="card-description">A pura essência do hambúrguer: carne na brasa, queijo derretido e pão fresquinho.</p>
                     <a href="cardapio.html" class="btn-menu">VER CLÁSSICOS</a>
                 </div>
                 <div class="menu-card">
-                    <img src="imagens/menu-2.png" alt="Acompanhamentos Perfeitos">
+                    <img src="imagens/menu-2.png" alt="Acompanhamentos Perfeitos" loading="lazy">
                     <h3>ACOMPANHAMENTOS PERFEITOS</h3>
                     <p class="card-description">Nossas batatas crocantes, anéis de cebola e molhos especiais para completar seu pedido.</p>
                     <a href="cardapio.html" class="btn-menu">VER ACOMPANHAMENTO</a>
                 </div>
                 <div class="menu-card">
-                    <img src="imagens/menu-3.png" alt="Vegetarianos & Veganos">
+                    <img src="imagens/menu-3.png" alt="Vegetarianos & Veganos" loading="lazy">
                     <h3>VEGETARIANOS & VEGANOS</h3>
                     <p class="card-description">Sabores incríveis em receitas 100% vegetais que vão surpreender você.</p>
                     <a href="cardapio.html" class="btn-menu">VER VEGGIE</a>
@@ -87,12 +108,12 @@
         <div class="container">
             <h2 class="section-title">NOSSA GALERIA</h2>
             <div class="gallery-grid">
-                <div class="gallery-item" id="gallery-1"></div>
-                <div class="gallery-item" id="gallery-2"></div>
-                <div class="gallery-item" id="gallery-3"></div>
-                <div class="gallery-item" id="gallery-4"></div>
-                <div class="gallery-item" id="gallery-5"></div>
-                <div class="gallery-item" id="gallery-6"></div>
+                <img src="imagens/galeria-1.png" alt="Hambúrguer clássico" class="gallery-item" loading="lazy" decoding="async">
+                <img src="imagens/galeria-2.png" alt="Batatas crocantes" class="gallery-item" loading="lazy" decoding="async">
+                <img src="imagens/galeria-3.png" alt="Hambúrguer vegano" class="gallery-item" loading="lazy" decoding="async">
+                <img src="imagens/galeria-4.png" alt="Milkshake" class="gallery-item" loading="lazy" decoding="async">
+                <img src="imagens/galeria-5.png" alt="Sobremesa" class="gallery-item" loading="lazy" decoding="async">
+                <img src="imagens/galeria-6.png" alt="Ambiente do restaurante" class="gallery-item" loading="lazy" decoding="async">
             </div>
         </div>
     </section>
@@ -102,7 +123,7 @@
             <div class="newsletter-text">
                 <p>"Não fique de fora do nosso mundo de sabores! Cadastre-se agora e receba em primeira mão nossas promoções exclusivas, lançamentos do cardápio e convites para eventos especiais."</p>
             </div>
-            <div class="newsletter-form-container">
+            <div class="newsletter-form-container" id="newsletter">
                 <form action="#" method="POST"> <h3 class="form-title">Cadastre-se</h3>
                     <div class="form-group">
                         <label for="nome-news">Nome:</label>
@@ -126,6 +147,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <footer class="main-footer">
         <div class="container">
@@ -160,65 +183,77 @@
         </div>
     </footer>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
 
-    <script>
-      // --- SUA CONFIGURAÇÃO FIREBASE ---
-      const firebaseConfig = {
-        apiKey: "AIzaSyC92LK20GbKuIqJ34ol2gRXQ7HBaDo4Ojw",
-        authDomain: "the-burger-co-site.firebaseapp.com",
-        projectId: "the-burger-co-site",
-        storageBucket: "the-burger-co-site.appspot.com",
-        messagingSenderId: "264313917347",
-        appId: "1:264313917347:web:6913602d31678a3d451416"
-      };
-      // --- FIM DA CONFIGURAÇÃO ---
+        <script>
+            // Scripts que dependem do Firebase aguardam o carregamento completo
+            window.addEventListener('load', () => {
+                // --- SUA CONFIGURAÇÃO FIREBASE ---
+                const firebaseConfig = {
+                    apiKey: "AIzaSyC92LK20GbKuIqJ34ol2gRXQ7HBaDo4Ojw",
+                    authDomain: "the-burger-co-site.firebaseapp.com",
+                    projectId: "the-burger-co-site",
+                    storageBucket: "the-burger-co-site.appspot.com",
+                    messagingSenderId: "264313917347",
+                    appId: "1:264313917347:web:6913602d31678a3d451416"
+                };
+                // Inicializar Firebase
+                if (typeof firebase !== 'undefined') {
+                    firebase.initializeApp(firebaseConfig);
+                    const auth = firebase.auth();
 
-      // Inicializar Firebase
-      firebase.initializeApp(firebaseConfig);
-      const auth = firebase.auth();
+                    // --- LÓGICA PARA ATUALIZAR O CABEÇALHO (Adicionar em TODAS as páginas) ---
+                    const navCadastro = document.getElementById('nav-cadastro');
+                    const navLogin = document.getElementById('nav-login');
+                    const navUser = document.getElementById('nav-user');
+                    const navLogout = document.getElementById('nav-logout');
+                    const userEmailSpan = document.getElementById('user-email');
+                    const logoutButton = document.getElementById('logout-button');
 
-      // --- LÓGICA PARA ATUALIZAR O CABEÇALHO (Adicionar em TODAS as páginas) ---
-      const navCadastro = document.getElementById('nav-cadastro');
-      const navLogin = document.getElementById('nav-login');
-      const navUser = document.getElementById('nav-user');
-      const navLogout = document.getElementById('nav-logout');
-      const userEmailSpan = document.getElementById('user-email');
-      const logoutButton = document.getElementById('logout-button');
+                    auth.onAuthStateChanged((user) => {
+                        if (user) {
+                            userEmailSpan.textContent = `Olá, ${user.email}`;
+                            if(navCadastro) navCadastro.style.display = 'none';
+                            if(navLogin) navLogin.style.display = 'none';
+                            if(navUser) navUser.style.display = 'list-item';
+                            if(navLogout) navLogout.style.display = 'list-item';
+                        } else {
+                            userEmailSpan.textContent = '';
+                            if(navCadastro) navCadastro.style.display = 'list-item';
+                            if(navLogin) navLogin.style.display = 'list-item';
+                            if(navUser) navUser.style.display = 'none';
+                            if(navLogout) navLogout.style.display = 'none';
+                        }
+                    });
 
-      auth.onAuthStateChanged((user) => {
-        if (user) {
-          console.log("Usuário logado:", user.email);
-          userEmailSpan.textContent = `Olá, ${user.email}`;
-          if(navCadastro) navCadastro.style.display = 'none';
-          if(navLogin) navLogin.style.display = 'none';
-          if(navUser) navUser.style.display = 'list-item';
-          if(navLogout) navLogout.style.display = 'list-item';
-        } else {
-          console.log("Usuário deslogado");
-          userEmailSpan.textContent = '';
-          if(navCadastro) navCadastro.style.display = 'list-item';
-          if(navLogin) navLogin.style.display = 'list-item';
-          if(navUser) navUser.style.display = 'none';
-          if(navLogout) navLogout.style.display = 'none';
-        }
-      });
+                    if (logoutButton) {
+                            logoutButton.addEventListener('click', (event) => {
+                                    event.preventDefault();
+                                    auth.signOut().then(() => {
+                                            alert('Você saiu da sua conta.');
+                                            window.location.href = 'index.html';
+                                    }).catch((error) => {
+                                            console.error('Erro ao fazer logout:', error);
+                                            alert('Erro ao sair: ' + error.message);
+                                    });
+                            });
+                    }
+                }
+            });
 
-      if (logoutButton) {
-          logoutButton.addEventListener('click', (event) => {
-              event.preventDefault();
-              auth.signOut().then(() => {
-                  console.log('Usuário deslogado com sucesso.');
-                  alert('Você saiu da sua conta.');
-                  window.location.href = 'index.html'; // Volta para home após logout
-              }).catch((error) => {
-                  console.error('Erro ao fazer logout:', error);
-                  alert('Erro ao sair: ' + error.message);
-              });
-          });
-      }
-      // --- FIM DA LÓGICA DO CABEÇALHO ---
-    </script>
+            // Toggle do menu móvel
+            document.addEventListener('DOMContentLoaded', () => {
+                const navToggle = document.getElementById('nav-toggle');
+                const primaryNav = document.getElementById('primary-navigation');
+                if (navToggle && primaryNav) {
+                    navToggle.addEventListener('click', () => {
+                        const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+                        navToggle.setAttribute('aria-expanded', !expanded);
+                        primaryNav.classList.toggle('open');
+                    });
+                }
+            });
+        </script>
 </body>
 </html>

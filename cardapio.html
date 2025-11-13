@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cardápio The Burguer co. — veja nossos hambúrgueres, acompanhamentos e opções veganas.">
     <title>Cardápio - The Burguer co.</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
     <header class="main-header">
         <div class="container">
             <h1 class="logo">The Burguer co.</h1>
-            <nav class="main-nav">
+            <button id="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">Menu</button>
+            <nav class="main-nav" id="primary-navigation">
                  <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="cardapio.html">Cardápio</a></li>
@@ -32,9 +38,9 @@
                 <h2>Clássicos Irresistíveis</h2>
                 <div class="menu-items-list">
                     <div class="menu-item">
-                        <div class="menu-item-image">
-                             <img src="imagens/burger-classic.png" alt="Classic Burger">
-                        </div>
+                            <div class="menu-item-image">
+                                <img src="imagens/burger-classic.png" alt="Hambúrguer clássico" loading="lazy">
+                            </div>
                         <div class="menu-item-details">
                             <h3>Classic Burger</h3>
                             <p class="item-description">Pão brioche, 150g de carne, queijo prato, alface, tomate, cebola roxa e maionese da casa.</p>
@@ -42,9 +48,9 @@
                         </div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-image">
-                             <img src="imagens/burger-cheddar.png" alt="Cheddar Burger">
-                        </div>
+                            <div class="menu-item-image">
+                                <img src="imagens/burger-cheddar.png" alt="Hambúrguer cheddar" loading="lazy">
+                            </div>
                         <div class="menu-item-details">
                             <h3>Cheddar Burger</h3>
                             <p class="item-description">Pão australiano, 150g de carne, cheddar cremoso e cebola caramelizada no shoyu.</p>
@@ -52,9 +58,9 @@
                         </div>
                     </div>
                     <div class="menu-item">
-                        <div class="menu-item-image">
-                             <img src="imagens/burger-bacon.png" alt="Bacon Supreme">
-                        </div>
+                            <div class="menu-item-image">
+                                <img src="imagens/burger-bacon.png" alt="Hambúrguer com bacon" loading="lazy">
+                            </div>
                         <div class="menu-item-details">
                             <h3>Bacon Supreme</h3>
                             <p class="item-description">Pão brioche, 180g de carne, queijo mussarela, fatias crocantes de bacon, alface americana e molho barbecue.</p>
@@ -68,9 +74,9 @@
                 <h2>Especiais da Casa</h2>
                 <div class="menu-items-list">
                     <div class="menu-item">
-                        <div class="menu-item-image">
-                             <img src="imagens/burger-gorgonzola.png" alt="Gorgon Burger">
-                        </div>
+                            <div class="menu-item-image">
+                                <img src="imagens/burger-gorgonzola.png" alt="Hambúrguer gorgonzola" loading="lazy">
+                            </div>
                         <div class="menu-item-details">
                             <h3>Gorgon Burger</h3>
                             <p class="item-description">Pão de batata, 200g de blend especial, creme de gorgonzola, rúcula e geleia de pimenta.</p>
@@ -111,9 +117,9 @@
                 <h2>Vegetarianos & Veganos</h2>
                 <div class="menu-items-list">
                     <div class="menu-item">
-                        <div class="menu-item-image">
-                             <img src="imagens/burger-veggie.png" alt="Veggie Burger">
-                        </div>
+                            <div class="menu-item-image">
+                                <img src="imagens/burger-veggie.png" alt="Hambúrguer vegano" loading="lazy">
+                            </div>
                         <div class="menu-item-details">
                             <h3>Veggie Burger</h3>
                             <p class="item-description">Pão integral, burger à base de plantas, queijo prato (ou vegano opcional), alface, tomate e maionese verde.</p>
@@ -121,9 +127,9 @@
                         </div>
                     </div>
                      <div class="menu-item">
-                        <div class="menu-item-image">
-                             <img src="imagens/burger-cogumelo.png" alt="Shimeji Burger">
-                        </div>
+                            <div class="menu-item-image">
+                                <img src="imagens/burger-cogumelo.png" alt="Hambúrguer de shimeji" loading="lazy">
+                            </div>
                         <div class="menu-item-details">
                             <h3>Shimeji Burger (Vegano)</h3>
                             <p class="item-description">Pão vegano, cogumelos shimeji salteados no shoyu com cebola roxa, alface e tomate seco.</p>
@@ -172,7 +178,7 @@
                 <div class="menu-items-list">
                     <div class="menu-item">
                         <div class="menu-item-image">
-                            <img src="imagens/sobremesa-brownie.png" alt="Brownie com Sorvete">
+                            <img src="imagens/sobremesa-brownie.png" alt="Brownie com sorvete" loading="lazy">
                        </div>
                          <div class="menu-item-details">
                             <h3>Brownie com Sorvete</h3>
@@ -195,73 +201,73 @@
         </div>
     </footer>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+        <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
 
-    <script>
-      // --- SUA CONFIGURAÇÃO FIREBASE ---
-      const firebaseConfig = {
-        apiKey: "AIzaSyC92LK20GbKuIqJ34ol2gRXQ7HBaDo4Ojw", // CONFIRA SE ESTÁ CORRETO
-        authDomain: "the-burger-co-site.firebaseapp.com", // CONFIRA SE ESTÁ CORRETO
-        projectId: "the-burger-co-site", // CONFIRA SE ESTÁ CORRETO
-        storageBucket: "the-burger-co-site.appspot.com", // CONFIRA SE ESTÁ CORRETO
-        messagingSenderId: "264313917347", // CONFIRA SE ESTÁ CORRETO
-        appId: "1:264313917347:web:6913602d31678a3d451416" // CONFIRA SE ESTÁ CORRETO
-      };
-      // --- FIM DA CONFIGURAÇÃO ---
+        <script>
+            window.addEventListener('load', () => {
+                    const firebaseConfig = {
+                        apiKey: "AIzaSyC92LK20GbKuIqJ34ol2gRXQ7HBaDo4Ojw",
+                        authDomain: "the-burger-co-site.firebaseapp.com",
+                        projectId: "the-burger-co-site",
+                        storageBucket: "the-burger-co-site.appspot.com",
+                        messagingSenderId: "264313917347",
+                        appId: "1:264313917347:web:6913602d31678a3d451416"
+                    };
+                    if (typeof firebase !== 'undefined') {
+                            firebase.initializeApp(firebaseConfig);
+                            const auth = firebase.auth();
 
-      try {
-          // Inicializar Firebase
-          firebase.initializeApp(firebaseConfig);
-          const auth = firebase.auth();
-          // Não precisamos do googleProvider aqui, a menos que adicione um botão Google nesta página
+                            const navCadastro = document.getElementById('nav-cadastro');
+                            const navLogin = document.getElementById('nav-login');
+                            const navUser = document.getElementById('nav-user');
+                            const navLogout = document.getElementById('nav-logout');
+                            const userEmailSpan = document.getElementById('user-email');
+                            const logoutButton = document.getElementById('logout-button');
 
-          // --- LÓGICA PARA ATUALIZAR O CABEÇALHO ---
-          const navCadastro = document.getElementById('nav-cadastro');
-          const navLogin = document.getElementById('nav-login');
-          const navUser = document.getElementById('nav-user');
-          const navLogout = document.getElementById('nav-logout');
-          const userEmailSpan = document.getElementById('user-email');
-          const logoutButton = document.getElementById('logout-button');
+                            auth.onAuthStateChanged((user) => {
+                                if (user) {
+                                    userEmailSpan.textContent = `Olá, ${user.email}`;
+                                    if(navCadastro) navCadastro.style.display = 'none';
+                                    if(navLogin) navLogin.style.display = 'none';
+                                    if(navUser) navUser.style.display = 'list-item';
+                                    if(navLogout) navLogout.style.display = 'list-item';
+                                } else {
+                                    userEmailSpan.textContent = '';
+                                    if(navCadastro) navCadastro.style.display = 'list-item';
+                                    if(navLogin) navLogin.style.display = 'list-item';
+                                    if(navUser) navUser.style.display = 'none';
+                                    if(navLogout) navLogout.style.display = 'none';
+                                }
+                            });
 
-          auth.onAuthStateChanged((user) => {
-            console.log("Auth state changed on cardapio.html:", user); // Log para depuração
-            if (user) {
-              // Usuário está logado
-              userEmailSpan.textContent = `Olá, ${user.email}`;
-              if(navCadastro) navCadastro.style.display = 'none';
-              if(navLogin) navLogin.style.display = 'none';
-              if(navUser) navUser.style.display = 'list-item';
-              if(navLogout) navLogout.style.display = 'list-item';
-            } else {
-              // Usuário está deslogado
-              userEmailSpan.textContent = '';
-              if(navCadastro) navCadastro.style.display = 'list-item';
-              if(navLogin) navLogin.style.display = 'list-item';
-              if(navUser) navUser.style.display = 'none';
-              if(navLogout) navLogout.style.display = 'none';
-            }
-          });
+                            if (logoutButton) {
+                                    logoutButton.addEventListener('click', (event) => {
+                                            event.preventDefault();
+                                            auth.signOut().then(() => {
+                                                    alert('Você saiu da sua conta.');
+                                                    window.location.href = 'index.html';
+                                            }).catch((error) => {
+                                                    console.error('Erro ao fazer logout:', error);
+                                                    alert('Erro ao sair: ' + error.message);
+                                            });
+                                    });
+                            }
+                    }
+            });
 
-          // Lógica do botão Sair
-          if (logoutButton) {
-              logoutButton.addEventListener('click', (event) => {
-                  event.preventDefault();
-                  auth.signOut().then(() => {
-                      alert('Você saiu da sua conta.');
-                      window.location.href = 'index.html'; // Volta para home
-                  }).catch((error) => {
-                      console.error('Erro ao fazer logout:', error);
-                      alert('Erro ao sair: ' + error.message);
-                  });
-              });
-          }
-          // --- FIM DA LÓGICA DO CABEÇALHO ---
-
-      } catch (e) {
-          console.error("Erro ao inicializar Firebase ou configurar listeners em cardapio.html:", e);
-          alert("Ocorreu um erro crítico na página de cardápio. Verifique o console.");
-      }
-    </script>
+            // Toggle do menu móvel
+            document.addEventListener('DOMContentLoaded', () => {
+                const navToggle = document.getElementById('nav-toggle');
+                const primaryNav = document.getElementById('primary-navigation');
+                if (navToggle && primaryNav) {
+                    navToggle.addEventListener('click', () => {
+                        const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+                        navToggle.setAttribute('aria-expanded', !expanded);
+                        primaryNav.classList.toggle('open');
+                    });
+                }
+            });
+        </script>
 </body>
 </html>
