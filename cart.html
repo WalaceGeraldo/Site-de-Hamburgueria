@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Carrinho - The Burguer co.</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <h1 class="logo">The Burguer co.</h1>
+      <button id="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">Menu</button>
+      <nav class="main-nav" id="primary-navigation">
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="cardapio.html">Cardápio</a></li>
+          <li id="nav-cadastro"><a href="cadastro.html">Cadastro</a></li>
+          <li id="nav-login"><a href="login.html" class="btn-login">Login</a></li>
+          <li id="nav-account" style="display: none;"><a href="minha-conta.html">Minha Conta</a></li>
+          <li id="nav-user" style="display: none;"><a href="minha-conta.html" id="user-email" style="color: #d9a040; margin-right: 15px;"></a></li>
+          <li id="nav-logout" style="display: none;"><a href="#" id="logout-button" class="btn-logout">Sair</a></li>
+          <li id="nav-cart"><a href="cart.html" class="btn-cart"><img src="imagens/carrinho.png" alt="Carrinho" style="width: 24px; height: 24px; vertical-align: middle;margin-top: 5px;"></a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="cart-section">
+    <div class="container">
+      <h1 class="page-title">Seu Carrinho</h1>
+      
+      <div id="cart-empty" class="cart-empty" style="display:none">
+        <p>Seu carrinho está vazio.</p>
+        <a href="cardapio.html" class="btn-order-primary">Ver Cardápio</a>
+      </div>
+
+      <div id="cart-content" class="cart-content" style="display:none">
+        <div class="cart-items" id="cart-items-container">
+          </div>
+        
+        <div class="cart-checkout-section">
+          <div class="delivery-address">
+            <h3>Endereço de Entrega</h3>
+            <form id="address-form" class="address-form">
+              <div class="form-row">
+                <input type="text" id="street" placeholder="Rua" required>
+                <input type="text" id="number" placeholder="Número" required>
+              </div>
+              <div class="form-row">
+                <input type="text" id="complement" placeholder="Complemento (opcional)">
+                <input type="text" id="neighborhood" placeholder="Bairro" required>
+              </div>
+              <div class="form-row">
+                <input type="text" id="city" placeholder="Cidade" required>
+                <input type="text" id="state" placeholder="Estado" required maxlength="2">
+              </div>
+              <input type="text" id="zip" placeholder="CEP" required>
+            </form>
+          </div>
+          
+          <div class="payment-methods">
+            <h3>Forma de Pagamento</h3>
+            <div class="payment-options">
+              <label class="payment-option">
+                <input type="radio" name="payment" value="pix" checked>
+                <div class="payment-card">
+                  <span class="payment-icon">💳</span>
+                  <span class="payment-name">PIX</span>
+                </div>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="card">
+                <div class="payment-card">
+                  <span class="payment-icon">💳</span>
+                  <span class="payment-name">Cartão</span>
+                </div>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment" value="cash">
+                <div class="payment-card">
+                  <span class="payment-icon">💵</span>
+                  <span class="payment-name">Dinheiro</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="cart-summary">
+            <h3>Resumo do Pedido</h3>
+            <div class="summary-line">
+              <span>Subtotal</span>
+              <span>R$ <span id="cart-subtotal">0.00</span></span>
+            </div>
+            <div class="summary-line">
+              <span>Taxa de entrega (10%)</span>
+              <span>R$ <span id="delivery-fee">0.00</span></span>
+            </div>
+            <div class="summary-line total">
+              <span>Total</span>
+              <span>R$ <span id="cart-total">0.00</span></span>
+            </div>
+            <button id="checkoutBtn" class="btn-checkout">Finalizar Pedido</button>
+            <button id="clearCartBtn" class="btn-clear">Limpar Carrinho</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="checkout-success" class="checkout-success" style="display:none">
+        <div class="success-icon">✓</div>
+        <h2>Pedido Realizado com Sucesso!</h2>
+        <p id="order-number"></p>
+        <p>Você pode acompanhar seu pedido em <a href="minha-conta.html">Minha Conta</a></p>
+        <a href="cardapio.html" class="btn-order-primary">Fazer Novo Pedido</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-col footer-logo"><h3>THE BURGUER CO.</h3></div>
+      <div class="footer-col"><h4>MAPA DO SITE</h4><ul><li><a href="index.html">INÍCIO</a></li><li><a href="cardapio.html">CARDÁPIO</a></li><li><a href="cadastro.html">CADASTRO</a></li></ul></div>
+      <div class="footer-col"><h4>SIGA-NOS NAS REDE SOCIAL</h4><div class="social-icons"><a href="#"><img src="imagens/icon-facebook.png" alt="Facebook"></a><a href="#"><img src="imagens/icon-instagram.png" alt="Instagram"></a><a href="#"><img src="imagens/icon-whatsapp.png" alt="WhatsApp"></a></div></div>
+      <div class="footer-col"><h4>PEDIDO ONLINE</h4><ul><li><a href="#">IFOOD</a></li><li><a href="#">WHATSAPP</a></li><li><span>LIGAR: (21) 99999-9999</span></li></ul></div>
+    </div>
+  </footer>
+
+  <script src="auth.js"></script>
+
+  <script>
+    const CART_KEY = 'site_cart_v1';
+
+    // --- FUNÇÕES BÁSICAS DO CARRINHO (Sem alteração) ---
+    function loadCart() {
+      try { return JSON.parse(localStorage.getItem(CART_KEY) || '[]'); } catch(e) { return []; }
+    }
+    function saveCart(cart) { 
+      localStorage.setItem(CART_KEY, JSON.stringify(cart)); 
+      try{ localStorage.setItem('site_cart_updated_at', Date.now().toString()); }catch(e){}
+    }
+    function getItemImage(itemName) {
+      const imageMap = {
+        'Classic Burger': 'imagens/burger-classic.png',
+        'Cheddar Burger': 'imagens/burger-cheddar.png',
+        'Bacon Supreme': 'imagens/burger-bacon.png',
+        'Gorgon Burger': 'imagens/burger-gorgonzola.png',
+        'Veggie Burger': 'imagens/burger-veggie.png',
+        'Shimeji Burger (Vegano)': 'imagens/burger-cogumelo.png',
+        'Brownie com Sorvete': 'imagens/sobremesa-brownie.png'
+      };
+      return imageMap[itemName] || 'imagens/burger-classic.png';
+    }
+    function renderCart() {
+      const cart = loadCart();
+      const container = document.getElementById('cart-items-container');
+      const empty = document.getElementById('cart-empty');
+      const content = document.getElementById('cart-content');
+      const subtotalEl = document.getElementById('cart-subtotal');
+      const totalEl = document.getElementById('cart-total');
+      
+      container.innerHTML = '';
+      
+      if (!cart.length) {
+        empty.style.display = 'flex';
+        content.style.display = 'none';
+        return;
+      }
+      
+      empty.style.display = 'none';
+      content.style.display = 'grid';
+      
+      let subtotal = 0;
+      cart.forEach((item, idx) => {
+        const itemSubtotal = item.price * item.qty;
+        subtotal += itemSubtotal;
+        
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'cart-item';
+        itemDiv.innerHTML = `
+          <img src="${getItemImage(item.name)}" alt="${item.name}" class="cart-item-img">
+          <div class="cart-item-details">
+            <h3 class="cart-item-name">${item.name}</h3>
+            <p class="cart-item-price">R$ ${item.price.toFixed(2)}</p>
+          </div>
+          <div class="cart-item-controls">
+            <div class="qty-controls">
+              <button class="qty-btn" data-idx="${idx}" data-action="decrease">-</button>
+              <span class="qty-value">${item.qty}</span>
+              <button class="qty-btn" data-idx="${idx}" data-action="increase">+</button>
+            </div>
+            <p class="cart-item-subtotal">R$ ${itemSubtotal.toFixed(2)}</p>
+            <button class="btn-remove" data-idx="${idx}">🗑️</button>
+          </div>
+        `;
+        container.appendChild(itemDiv);
+      });
+      
+      const deliveryFee = subtotal * 0.10;
+      const total = subtotal + deliveryFee;
+      subtotalEl.textContent = subtotal.toFixed(2);
+      document.getElementById('delivery-fee').textContent = deliveryFee.toFixed(2);
+      totalEl.textContent = total.toFixed(2);
+    }
+    function updateCartCount() {
+      try {
+        const cart = loadCart();
+        const count = cart.reduce((s, i) => s + (i.qty || 0), 0);
+        const el = document.getElementById('cart-count');
+        if (el) el.textContent = count;
+      } catch (e) {}
+    }
+    // --- FIM DAS FUNÇÕES BÁSICAS ---
+
+
+    // --- CONTROLES DO CARRINHO (Aumentar, Diminuir, Remover) ---
+    document.addEventListener('click', (e) => {
+      if (e.target.matches('.btn-remove') || e.target.closest('.btn-remove')) {
+        const btn = e.target.matches('.btn-remove') ? e.target : e.target.closest('.btn-remove');
+        const idx = +btn.dataset.idx;
+        const cart = loadCart();
+        cart.splice(idx, 1);
+        saveCart(cart);
+        renderCart();
+        updateCartCount();
+      }
+      if (e.target.matches('.qty-btn')) {
+        const idx = +e.target.dataset.idx;
+        const action = e.target.dataset.action;
+        const cart = loadCart();
+        if (action === 'increase') {
+          cart[idx].qty++;
+        } else if (action === 'decrease' && cart[idx].qty > 1) {
+          cart[idx].qty--;
+        }
+        saveCart(cart);
+        renderCart();
+        updateCartCount();
+      }
+      if (e.target.id === 'clearCartBtn') {
+        if (confirm('Tem certeza que deseja limpar o carrinho?')) {
+          localStorage.removeItem(CART_KEY);
+          renderCart();
+          updateCartCount();
+        }
+      }
+    });
+
+    // --- LÓGICA DE CHECKOUT (ATUALIZADA PARA API LOCAL) ---
+    document.getElementById('checkoutBtn').addEventListener('click', async () => {
+      const cart = loadCart();
+      if (!cart.length) {
+        alert('Seu carrinho está vazio.');
+        return;
+      }
+
+      // 1. Verifica login usando auth.js
+      // A função window.isLoggedIn() vem do auth.js
+      if (!window.isLoggedIn()) {
+        alert('Você precisa estar logado para finalizar a compra.');
+        window.location.href = 'login.html';
+        return;
+      }
+
+      // 2. Coleta o token do auth.js (via localStorage)
+      const token = localStorage.getItem('authToken');
+      if (!token) {
+          alert('Token não encontrado. Faça login novamente.');
+          window.location.href = 'login.html';
+          return;
+      }
+
+      // 3. Validar campos de endereço
+      const street = document.getElementById('street').value.trim();
+      const number = document.getElementById('number').value.trim();
+      const neighborhood = document.getElementById('neighborhood').value.trim();
+      const city = document.getElementById('city').value.trim();
+      const state = document.getElementById('state').value.trim();
+      const zip = document.getElementById('zip').value.trim();
+      
+      if (!street || !number || !neighborhood || !city || !state || !zip) {
+        alert('Por favor, preencha todos os campos de endereço obrigatórios.');
+        return;
+      }
+      const complement = document.getElementById('complement').value.trim();
+      
+      const address = {
+        street, number, complement, neighborhood, city, state, zip
+      };
+
+      // 4. Coletar dados do pedido
+      const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+      const subtotal = cart.reduce((s, i) => s + (i.price * i.qty), 0);
+      const deliveryFee = subtotal * 0.10;
+      const total = subtotal + deliveryFee;
+
+      // 5. Montar payload para a API
+      const orderPayload = {
+        items: cart,
+        address: address,
+        total: total,
+        subtotal: subtotal,
+        deliveryFee: deliveryFee,
+        paymentMethod: paymentMethod
+      };
+
+      // 6. ENVIAR PARA A API
+      try {
+        const response = await fetch('http://localhost:3000/api/orders', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token // Envia o token
+          },
+          body: JSON.stringify(orderPayload)
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.success) {
+          throw new Error(data.message || 'Erro no servidor. Tente novamente.');
+        }
+
+        // 7. SUCESSO!
+        localStorage.removeItem(CART_KEY); // Limpa o carrinho
+        updateCartCount(); // Atualiza o header
+
+        // Mostra mensagem de sucesso
+        document.getElementById('cart-content').style.display = 'none';
+        document.getElementById('checkout-success').style.display = 'flex';
+        // Usa o ID do pedido vindo da API
+        document.getElementById('order-number').textContent = `Pedido #${data.orderId}`;
+        
+      } catch (e) {
+        console.error('Erro ao finalizar pedido:', e);
+        alert('Erro ao finalizar pedido: ' + e.message);
+      }
+    });
+
+    // --- INICIALIZAÇÃO DA PÁGINA ---
+    document.addEventListener('DOMContentLoaded', () => {
+      // (auth.js já cuidou do header)
+      
+      renderCart();
+      updateCartCount();
+
+      // Listener para atualizações de carrinho em outras abas
+      window.addEventListener('storage', (e) => {
+        if (e.key === CART_KEY || e.key === 'site_cart_updated_at') {
+          renderCart();
+          updateCartCount();
+        }
+      });
+      
+      // Menu Mobile
+      const navToggle = document.getElementById('nav-toggle');
+      const primaryNav = document.getElementById('primary-navigation');
+      if (navToggle && primaryNav) {
+          navToggle.addEventListener('click', () => {
+              const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+              navToggle.setAttribute('aria-expanded', !expanded);
+              primaryNav.classList.toggle('open');
+          });
+      }
+    });
+  </script>
+</body>
+</html>

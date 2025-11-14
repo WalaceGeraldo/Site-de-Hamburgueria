@@ -21,135 +21,149 @@
                  <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="cardapio.html">Cardápio</a></li>
-
                     <li id="nav-cadastro"><a href="cadastro.html">Cadastro</a></li>
                     <li id="nav-login"><a href="login.html" class="btn-login">Login</a></li>
-
-                    <li id="nav-user" style="display: none;"> <span id="user-email" style="color: #ccc; margin-right: 15px;"></span> </li>
-                    <li id="nav-logout" style="display: none;"> <a href="#" id="logout-button" class="btn-logout">Sair</a> </li>
+                    <li id="nav-account" style="display: none;"><a href="minha-conta.html">Minha Conta</a></li>
+                    <li id="nav-user" style="display: none;"><a href="minha-conta.html" id="user-email" style="color: #d9a040; margin-right: 15px;"></a></li>
+                    <li id="nav-logout" style="display: none;"><a href="#" id="logout-button" class="btn-logout">Sair</a></li>
+                    <li id="nav-cart"><a href="cart.html" class="btn-cart"><img src="imagens/carrinho.png" alt="Carrinho" style="width: 24px; height: 24px; vertical-align: middle;margin-top: 5px;"></a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <main id="main">
-    <section class="hero-banner">
-        <picture>
-            <source media="(max-width: 640px)" srcset="imagens/banner.png" type="image/png">
-            <img src="imagens/banner.png" alt="Hambúrgueres artesanais frescos" class="hero-bg-img" decoding="async">
-        </picture>
-        <div class="hero-overlay">
-            <div class="container hero-content">
-                <h2>O Melhor Hambúrguer da Cidade</h2>
-                <p>Ingredientes selecionados, pão feito na casa e um sabor que você não vai esquecer.</p>
-                <div class="hero-cta">
-                    <a href="cardapio.html" class="btn-order-primary">VER CARDÁPIO</a>
-                    <a href="#newsletter" class="btn-order-secondary">CADASTRE-SE</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="menu-section">
-        <div class="container">
-            <h2 class="section-title">NOSSO MENU</h2>
-            <p class="section-description">
-                Conheça nossas criações. De clássicos suculentos a opções veganas inovadoras, cada hambúrguer é uma experiência única.
-            </p>
-            <div class="menu-cards">
-                <div class="menu-card">
-                    <img src="imagens/menu-1.png" alt="Hambúrgueres Clássicos" loading="lazy">
-                    <h3>CLÁSSICOS IRRESISTÍVEIS</h3>
-                    <p class="card-description">A pura essência do hambúrguer: carne na brasa, queijo derretido e pão fresquinho.</p>
-                    <a href="cardapio.html" class="btn-menu">VER CLÁSSICOS</a>
-                </div>
-                <div class="menu-card">
-                    <img src="imagens/menu-2.png" alt="Acompanhamentos Perfeitos" loading="lazy">
-                    <h3>ACOMPANHAMENTOS PERFEITOS</h3>
-                    <p class="card-description">Nossas batatas crocantes, anéis de cebola e molhos especiais para completar seu pedido.</p>
-                    <a href="cardapio.html" class="btn-menu">VER ACOMPANHAMENTO</a>
-                </div>
-                <div class="menu-card">
-                    <img src="imagens/menu-3.png" alt="Vegetarianos & Veganos" loading="lazy">
-                    <h3>VEGETARIANOS & VEGANOS</h3>
-                    <p class="card-description">Sabores incríveis em receitas 100% vegetais que vão surpreender você.</p>
-                    <a href="cardapio.html" class="btn-menu">VER VEGGIE</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="history-section">
-        <div class="container">
-            <h2 class="section-title">Nossa História</h2>
-            <div class="history-content">
-                <div class="history-image" id="historyImage"></div>
-                <div class="history-text">
-                    <div class="decorator-line"></div>
-                    <h3>A PAIXÃO POR TRÁS DE CADA MORDIDA</h3>
-                    <p>Na The Burguer co., acreditamos que um bom hambúrguer é uma obra de arte. Começamos nossa jornada com uma paixão simples: criar os hambúrgueres mais suculentos e saborosos que você já provou. Usamos apenas ingredientes frescos, da carne moída na hora aos pães artesanais assados diariamente. Cada molho é feito em casa, cada vegetal é selecionado a dedo. Para nós, não é apenas comida; é uma experiência. Estamos comprometidos em garantir que cada mordida seja uma explosão inesquecível.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="order-section">
-        <div class="container">
-            <h3 class="section-subtitle">FOME? PEÇA AGORA</h3>
-            <p>RECEBA SEU PEDIDO QUENTINHO EM CASA OU RETIRE NA LOJA</p>
-            <div class="order-buttons">
-                <a href="#" class="btn-order-primary">FAZER PEDIDO ONLINE</a>
-                <a href="cardapio.html" class="btn-order-secondary">VER CARDÁPIO COMPLETO</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="gallery-section">
-        <div class="container">
-            <h2 class="section-title">NOSSA GALERIA</h2>
-            <div class="gallery-grid">
-                <img src="imagens/galeria-1.png" alt="Hambúrguer clássico" class="gallery-item" loading="lazy" decoding="async">
-                <img src="imagens/galeria-2.png" alt="Batatas crocantes" class="gallery-item" loading="lazy" decoding="async">
-                <img src="imagens/galeria-3.png" alt="Hambúrguer vegano" class="gallery-item" loading="lazy" decoding="async">
-                <img src="imagens/galeria-4.png" alt="Milkshake" class="gallery-item" loading="lazy" decoding="async">
-                <img src="imagens/galeria-5.png" alt="Sobremesa" class="gallery-item" loading="lazy" decoding="async">
-                <img src="imagens/galeria-6.png" alt="Ambiente do restaurante" class="gallery-item" loading="lazy" decoding="async">
-            </div>
-        </div>
-    </section>
-
-    <section class="newsletter-section">
-        <div class="container">
-            <div class="newsletter-text">
-                <p>"Não fique de fora do nosso mundo de sabores! Cadastre-se agora e receba em primeira mão nossas promoções exclusivas, lançamentos do cardápio e convites para eventos especiais."</p>
-            </div>
-            <div class="newsletter-form-container" id="newsletter">
-                <form action="#" method="POST"> <h3 class="form-title">Cadastre-se</h3>
-                    <div class="form-group">
-                        <label for="nome-news">Nome:</label>
-                        <input type="text" id="nome-news" name="nome">
+        <section class="hero-banner">
+            <picture>
+                <source media="(max-width: 640px)" srcset="imagens/banner.png" type="image/png">
+                <img src="imagens/banner.png" alt="Hambúrgueres artesanais frescos" class="hero-bg-img" decoding="async">
+            </picture>
+            <div class="hero-overlay">
+                <div class="container hero-content">
+                    <h2>O Melhor Hambúrguer da Cidade</h2>
+                    <p>Ingredientes selecionados, pão feito na casa e um sabor que você não vai esquecer.</p>
+                    <div class="hero-cta">
+                        <a href="cardapio.html" class="btn-order-primary">VER CARDÁPIO</a>
+                        <a href="#newsletter" class="btn-order-secondary">CADASTRE-SE</a>
                     </div>
-                    <div class="form-group">
-                        <label for="sobrenome-news">Sobrenome:</label>
-                        <input type="text" id="sobrenome-news" name="sobrenome">
-                    </div>
-                    <div class="form-group">
-                        <label for="email-news">Email:</label>
-                        <input type="email" id="email-news" name="email">
-                    </div>
-                    <div class="form-group">
-                        <label for="celular-news">Celular:</label>
-                        <input type="tel" id="celular-news" name="celular">
-                    </div>
-                    <button type="submit" class="btn-submit">CADASTRE-SE</button>
-                    <a href="#" class="privacy-link">Política de Privacidade</a>
-                </form>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <section class="menu-section">
+            <div class="container">
+                <h2 class="section-title">NOSSO MENU</h2>
+                <p class="section-description">
+                    Conheça nossas criações. De clássicos suculentos a opções veganas inovadoras, cada hambúrguer é uma experiência única.
+                </p>
+                <div class="menu-cards">
+                    <div class="menu-card">
+                        <img src="imagens/menu-1.png" alt="Hambúrgueres Clássicos" loading="lazy">
+                        <h3>CLÁSSICOS IRRESISTÍVEIS</h3>
+                        <p class="card-description">A pura essência do hambúrguer: carne na brasa, queijo derretido e pão fresquinho.</p>
+                        <a href="cardapio.html" class="btn-menu">VER CLÁSSICOS</a>
+                    </div>
+                    <div class="menu-card">
+                        <img src="imagens/menu-2.png" alt="Acompanhamentos Perfeitos" loading="lazy">
+                        <h3>ACOMPANHAMENTOS PERFEITOS</h3>
+                        <p class="card-description">Nossas batatas crocantes, anéis de cebola e molhos especiais para completar seu pedido.</p>
+                        <a href="cardapio.html" class="btn-menu">VER ACOMPANHAMENTO</a>
+                    </div>
+                    <div class="menu-card">
+                        <img src="imagens/menu-3.png" alt="Vegetarianos & Veganos" loading="lazy">
+                        <h3>VEGETARIANOS & VEGANOS</h3>
+                        <p class="card-description">Sabores incríveis em receitas 100% vegetais que vão surpreender você.</p>
+                        <a href="cardapio.html" class="btn-menu">VER VEGGIE</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="history-section">
+            <div class="container">
+                <h2 class="section-title">Nossa História</h2>
+                <div class="history-content">
+                    <div class="history-image" id="historyImage"></div>
+                    <div class="history-text">
+                        <div class="decorator-line"></div>
+                        <h3>A PAIXÃO POR TRÁS DE CADA MORDIDA</h3>
+                        <p>Na The Burguer co., acreditamos que um bom hambúrguer é uma obra de arte. Começamos nossa jornada com uma paixão simples: criar os hambúrgueres mais suculentos e saborosos que você já provou. Usamos apenas ingredientes frescos, da carne moída na hora aos pães artesanais assados diariamente. Cada molho é feito em casa, cada vegetal é selecionado a dedo. Para nós, não é apenas comida; é uma experiência. Estamos comprometidos em garantir que cada mordida seja uma explosão inesquecível.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="order-section">
+            <div class="container">
+                <h3 class="section-subtitle">FOME? PEÇA AGORA</h3>
+                <p>RECEBA SEU PEDIDO QUENTINHO EM CASA OU RETIRE NA LOJA</p>
+                <div class="order-buttons">
+                    <a href="#" class="btn-order-primary">FAZER PEDIDO ONLINE</a>
+                    <a href="cardapio.html" class="btn-order-secondary">VER CARDÁPIO COMPLETO</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section">
+            <div class="container">
+                <h2 class="section-title">NOSSA GALERIA</h2>
+                <div class="gallery-grid">
+                    <img src="imagens/galeria-1.png" alt="Hambúrguer clássico" class="gallery-item" loading="lazy" decoding="async">
+                    <img src="imagens/galeria-2.png" alt="Batatas crocantes" class="gallery-item" loading="lazy" decoding="async">
+                    <img src="imagens/galeria-3.png" alt="Hambúrguer vegano" class="gallery-item" loading="lazy" decoding="async">
+                    <img src="imagens/galeria-4.png" alt="Milkshake" class="gallery-item" loading="lazy" decoding="async">
+                    <img src="imagens/galeria-5.png" alt="Sobremesa" class="gallery-item" loading="lazy" decoding="async">
+                    <img src="imagens/galeria-6.png" alt="Ambiente do restaurante" class="gallery-item" loading="lazy" decoding="async">
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-section">
+            <div class="container">
+                <div class="newsletter-content">
+                    <div class="newsletter-promo">
+                        <div class="promo-badge">
+                            <span class="discount-number">COMPRE 1</span>
+                            <span class="discount-text">LEVE 2</span>
+                        </div>
+                        <h3 class="promo-title">Compre 1 Hambúrguer e Leve Outro de Graça!</h3>
+                        <p class="promo-description">Cadastre-se agora e receba um cupom para levar um hambúrguer a mais no seu primeiro pedido. Válido na compra de qualquer hambúrguer do cardápio.</p>
+                        <ul class="promo-features">
+                            <li>✓ Promoções exclusivas toda semana</li>
+                            <li>✓ Novidades em primeira mão</li>
+                            <li>✓ Acumule pontos a cada compra</li>
+                        </ul>
+                    </div>
+                    <div class="newsletter-form-container" id="newsletter">
+                        <form action="#" method="POST"> <h3 class="form-title">Cadastre-se</h3>
+                            <div class="form-group">
+                                <label for="nome-news">Nome:</label>
+                                <input type="text" id="nome-news" name="nome">
+                            </div>
+                            <div class="form-group">
+                                <label for="sobrenome-news">Sobrenome:</label>
+                                <input type="text" id="sobrenome-news" name="sobrenome">
+                            </div>
+                            <div class="form-group">
+                                <label for="email-news">Email:</label>
+                                <input type="email" id="email-news" name="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="celular-news">Celular:</label>
+                                <input type="tel" id="celular-news" name="celular">
+                            </div>
+                            <button type="submit" class="btn-submit">QUERO APROVEITAR!</button>
+                            <a href="#" class="privacy-link">Política de Privacidade</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
-
     <footer class="main-footer">
         <div class="container">
             <div class="footer-col footer-logo">
@@ -183,107 +197,36 @@
         </div>
     </footer>
 
-        <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-        <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="auth.js"></script>
 
-        <script>
-            // Scripts que dependem do Firebase aguardam o carregamento completo
-            window.addEventListener('load', () => {
-                // --- SUA CONFIGURAÇÃO FIREBASE ---
-                const firebaseConfig = {
-                    apiKey: "AIzaSyC92LK20GbKuIqJ34ol2gRXQ7HBaDo4Ojw",
-                    authDomain: "the-burger-co-site.firebaseapp.com",
-                    projectId: "the-burger-co-site",
-                    storageBucket: "the-burger-co-site.appspot.com",
-                    messagingSenderId: "264313917347",
-                    appId: "1:264313917347:web:6913602d31678a3d451416"
-                };
-                // Inicializar Firebase
-                if (typeof firebase !== 'undefined') {
-                    firebase.initializeApp(firebaseConfig);
-                    const auth = firebase.auth();
+    <script>
+        // Toggle do menu móvel
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.getElementById('nav-toggle');
+            const primaryNav = document.getElementById('primary-navigation');
+            if (navToggle && primaryNav) {
+                navToggle.addEventListener('click', () => {
+                    const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+                    navToggle.setAttribute('aria-expanded', !expanded);
+                    primaryNav.classList.toggle('open');
+                });
+            }
+        });
 
-                    // --- LÓGICA PARA ATUALIZAR O CABEÇALHO (Adicionar em TODAS as páginas) ---
-                    const navCadastro = document.getElementById('nav-cadastro');
-                    const navLogin = document.getElementById('nav-login');
-                    const navUser = document.getElementById('nav-user');
-                    const navLogout = document.getElementById('nav-logout');
-                    const userEmailSpan = document.getElementById('user-email');
-                    const logoutButton = document.getElementById('logout-button');
-
-                    auth.onAuthStateChanged((user) => {
-                        if (user) {
-                            userEmailSpan.textContent = `Olá, ${user.email}`;
-                            if(navCadastro) navCadastro.style.display = 'none';
-                            if(navLogin) navLogin.style.display = 'none';
-                            if(navUser) navUser.style.display = 'list-item';
-                            if(navLogout) navLogout.style.display = 'list-item';
-                        } else {
-                            userEmailSpan.textContent = '';
-                            if(navCadastro) navCadastro.style.display = 'list-item';
-                            if(navLogin) navLogin.style.display = 'list-item';
-                            if(navUser) navUser.style.display = 'none';
-                            if(navLogout) navLogout.style.display = 'none';
-                        }
-                    });
-
-                    if (logoutButton) {
-                            logoutButton.addEventListener('click', (event) => {
-                                    event.preventDefault();
-                                    auth.signOut().then(() => {
-                                            alert('Você saiu da sua conta.');
-                                            window.location.href = 'index.html';
-                                    }).catch((error) => {
-                                            console.error('Erro ao fazer logout:', error);
-                                            alert('Erro ao sair: ' + error.message);
-                                    });
-                            });
-                    }
-                }
-            });
-
-                // Se não houver usuário Firebase, usar autenticação local (token armazenado)
-                function updateHeaderFromLocalAuth() {
-                    const navCadastro = document.getElementById('nav-cadastro');
-                    const navLogin = document.getElementById('nav-login');
-                    const navUser = document.getElementById('nav-user');
-                    const navLogout = document.getElementById('nav-logout');
-                    const userEmailSpan = document.getElementById('user-email');
-                    const logoutButton = document.getElementById('logout-button');
-                    const token = localStorage.getItem('authToken');
-                    const email = localStorage.getItem('authEmail');
-                    if (token && email) {
-                        if(userEmailSpan) userEmailSpan.textContent = `Olá, ${email}`;
-                        if(navCadastro) navCadastro.style.display = 'none';
-                        if(navLogin) navLogin.style.display = 'none';
-                        if(navUser) navUser.style.display = 'list-item';
-                        if(navLogout) navLogout.style.display = 'list-item';
-                        if (logoutButton) {
-                            logoutButton.addEventListener('click', (e) => {
-                                e.preventDefault();
-                                localStorage.removeItem('authToken');
-                                localStorage.removeItem('authEmail');
-                                localStorage.removeItem('authName');
-                                window.location.href = 'index.html';
-                            });
-                        }
-                    }
-                }
-                // Executa no carregamento
-                document.addEventListener('DOMContentLoaded', updateHeaderFromLocalAuth);
-
-            // Toggle do menu móvel
-            document.addEventListener('DOMContentLoaded', () => {
-                const navToggle = document.getElementById('nav-toggle');
-                const primaryNav = document.getElementById('primary-navigation');
-                if (navToggle && primaryNav) {
-                    navToggle.addEventListener('click', () => {
-                        const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
-                        navToggle.setAttribute('aria-expanded', !expanded);
-                        primaryNav.classList.toggle('open');
-                    });
-                }
-            });
-        </script>
+        // Atualiza contador do carrinho no header
+        (function(){
+            function updateCart(){
+                try{ 
+                    const cart = JSON.parse(localStorage.getItem('site_cart_v1')||'[]'); 
+                    const count = cart.reduce((s,i)=>s+(i.qty||0),0); 
+                    const el = document.getElementById('cart-count'); 
+                    if(el) el.textContent = count; 
+                }catch(e){}
+            }
+            updateCart();
+            window.addEventListener('storage', updateCart);
+            document.addEventListener('DOMContentLoaded', updateCart);
+        })();
+    </script>
 </body>
 </html>

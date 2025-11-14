@@ -23,14 +23,16 @@
                     <li><a href="cardapio.html">Cardápio</a></li>
                     <li id="nav-cadastro"><a href="cadastro.html">Cadastro</a></li>
                     <li id="nav-login"><a href="login.html" class="btn-login">Login</a></li>
-                    <li id="nav-user" style="display: none;"><span id="user-email" style="color: #ccc; margin-right: 15px;"></span></li>
+                    <li id="nav-account" style="display: none;"><a href="minha-conta.html">Minha Conta</a></li>
+                    <li id="nav-user" style="display: none;"><a href="minha-conta.html" id="user-email" style="color: #d9a040; margin-right: 15px;"></a></li>
                     <li id="nav-logout" style="display: none;"><a href="#" id="logout-button" class="btn-logout">Sair</a></li>
+                    <li id="nav-cart"><a href="cart.html" class="btn-cart"><img src="imagens/carrinho.png" alt="Carrinho" style="width: 24px; height: 24px; vertical-align: middle;margin-top: 5px;"></a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="cardapio-section">
+    <main id="main" class="cardapio-section">
         <div class="container">
             <h1 class="page-title">Nosso Cardápio</h1>
 
@@ -44,7 +46,12 @@
                         <div class="menu-item-details">
                             <h3>Classic Burger</h3>
                             <p class="item-description">Pão brioche, 150g de carne, queijo prato, alface, tomate, cebola roxa e maionese da casa.</p>
-                            <p class="item-price">R$ 25,00</p>
+                            <div class="price-container">
+                                <p class="item-price">R$ 25,00</p>
+                                <button type="button" class="btn-add-plus" aria-label="Adicionar Classic Burger ao carrinho" data-name="Classic Burger" data-price="25.00">
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="menu-item">
@@ -54,7 +61,12 @@
                         <div class="menu-item-details">
                             <h3>Cheddar Burger</h3>
                             <p class="item-description">Pão australiano, 150g de carne, cheddar cremoso e cebola caramelizada no shoyu.</p>
-                            <p class="item-price">R$ 28,00</p>
+                            <div class="price-container">
+                                <p class="item-price">R$ 28,00</p>
+                                <button type="button" class="btn-add-plus" aria-label="Adicionar Cheddar Burger ao carrinho" data-name="Cheddar Burger" data-price="28.00">
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <div class="menu-item">
@@ -64,10 +76,15 @@
                         <div class="menu-item-details">
                             <h3>Bacon Supreme</h3>
                             <p class="item-description">Pão brioche, 180g de carne, queijo mussarela, fatias crocantes de bacon, alface americana e molho barbecue.</p>
-                            <p class="item-price">R$ 32,00</p>
+                            <div class="price-container">
+                                <p class="item-price">R$ 32,00</p>
+                                <button type="button" class="btn-add-plus" aria-label="Adicionar Bacon Supreme ao carrinho" data-name="Bacon Supreme" data-price="32.00">
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
-                     </div>
+                 </div>
             </section>
 
              <section class="menu-category">
@@ -80,40 +97,18 @@
                         <div class="menu-item-details">
                             <h3>Gorgon Burger</h3>
                             <p class="item-description">Pão de batata, 200g de blend especial, creme de gorgonzola, rúcula e geleia de pimenta.</p>
-                            <p class="item-price">R$ 35,00</p>
+                            <div class="price-container">
+                                <p class="item-price">R$ 35,00</p>
+                                <button type="button" class="btn-add-plus" aria-label="Adicionar Gorgon Burger ao carrinho" data-name="Gorgon Burger" data-price="35.00">
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
-                     </div>
+                 </div>
             </section>
-
+            
             <section class="menu-category">
-                <h2>Acompanhamentos Perfeitos</h2>
-                <div class="menu-items-list">
-                    <div class="menu-item">
-                         <div class="menu-item-details no-image">
-                            <h3>Batatas Fritas</h3>
-                            <p class="item-description">Porção generosa de batatas sequinhas e crocantes.</p>
-                            <p class="item-price">R$ 15,00</p>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-details no-image">
-                            <h3>Onion Rings</h3>
-                            <p class="item-description">Anéis de cebola empanados e fritos, acompanha maionese da casa.</p>
-                            <p class="item-price">R$ 18,00</p>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <div class="menu-item-details no-image">
-                            <h3>Batata Rústica com Alecrim</h3>
-                            <p class="item-description">Batatas cortadas em gomos, assadas com azeite e alecrim fresco.</p>
-                            <p class="item-price">R$ 17,00</p>
-                        </div>
-                    </div>
-                     </div>
-            </section>
-
-             <section class="menu-category">
                 <h2>Vegetarianos & Veganos</h2>
                 <div class="menu-items-list">
                     <div class="menu-item">
@@ -123,7 +118,12 @@
                         <div class="menu-item-details">
                             <h3>Veggie Burger</h3>
                             <p class="item-description">Pão integral, burger à base de plantas, queijo prato (ou vegano opcional), alface, tomate e maionese verde.</p>
-                            <p class="item-price">R$ 30,00</p>
+                            <div class="price-container">
+                                <p class="item-price">R$ 30,00</p>
+                                <button type="button" class="btn-add-plus" aria-label="Adicionar Veggie Burger ao carrinho" data-name="Veggie Burger" data-price="30.00">
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
                      <div class="menu-item">
@@ -133,47 +133,18 @@
                         <div class="menu-item-details">
                             <h3>Shimeji Burger (Vegano)</h3>
                             <p class="item-description">Pão vegano, cogumelos shimeji salteados no shoyu com cebola roxa, alface e tomate seco.</p>
-                            <p class="item-price">R$ 33,00</p>
+                            <div class="price-container">
+                                <p class="item-price">R$ 33,00</p>
+                                <button type="button" class="btn-add-plus" aria-label="Adicionar Shimeji Burger ao carrinho" data-name="Shimeji Burger (Vegano)" data-price="33.00">
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
-                     </div>
+                 </div>
             </section>
-
+            
             <section class="menu-category">
-                <h2>Bebidas</h2>
-                <div class="menu-items-list">
-                    <div class="menu-item">
-                         <div class="menu-item-details no-image">
-                            <h3>Refrigerante Lata</h3>
-                            <p class="item-description">Coca-Cola, Guaraná Antarctica, Fanta Laranja, Sprite (350ml).</p>
-                            <p class="item-price">R$ 6,00</p>
-                        </div>
-                    </div>
-                     <div class="menu-item">
-                        <div class="menu-item-details no-image">
-                           <h3>Suco Natural</h3>
-                           <p class="item-description">Laranja, Abacaxi com Hortelã, Maracujá (Copo 400ml).</p>
-                           <p class="item-price">R$ 9,00</p>
-                       </div>
-                   </div>
-                    <div class="menu-item">
-                        <div class="menu-item-details no-image">
-                           <h3>Milk Shake</h3>
-                           <p class="item-description">Chocolate, Morango, Ovomaltine (Copo 400ml).</p>
-                           <p class="item-price">R$ 18,00</p>
-                       </div>
-                   </div>
-                    <div class="menu-item">
-                        <div class="menu-item-details no-image">
-                           <h3>Água Mineral</h3>
-                           <p class="item-description">Com gás ou sem gás (500ml).</p>
-                           <p class="item-price">R$ 4,00</p>
-                       </div>
-                   </div>
-                     </div>
-            </section>
-
-             <section class="menu-category">
                 <h2>Sobremesas</h2>
                 <div class="menu-items-list">
                     <div class="menu-item">
@@ -183,15 +154,114 @@
                          <div class="menu-item-details">
                             <h3>Brownie com Sorvete</h3>
                             <p class="item-description">Brownie quentinho de chocolate com nozes, servido com uma bola de sorvete de creme e calda de chocolate.</p>
-                            <p class="item-price">R$ 22,00</p>
+                            <div class="price-container">
+                                <p class="item-price">R$ 22,00</p>
+                                <button type="button" class="btn-add-plus" aria-label="Adicionar Brownie com Sorvete ao carrinho" data-name="Brownie com Sorvete" data-price="22.00">
+                                    +
+                                </button>
+                            </div>
                         </div>
                     </div>
-                     </div>
+                 </div>
             </section>
 
+            <section class="menu-category">
+                <h2>Acompanhamentos Perfeitos</h2>
+                <div class="menu-items-list">
+                    <div class="menu-item">
+                         <div class="menu-item-details no-image">
+                            <h3>Batatas Fritas</h3>
+                            <p class="item-description">Porção generosa de batatas sequinhas e crocantes.</p>
+                            <div class="price-container">
+                                <p class="item-price">R$ 15,00</p>
+                                <button type="button" class="btn-add-plus" aria-label="Adicionar Batatas Fritas ao carrinho" data-name="Batatas Fritas" data-price="15.00">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-details no-image">
+                            <h3>Onion Rings</h3>
+                            <p class="item-description">Anéis de cebola empanados e fritos, acompanha maionese da casa.</p>
+                            <div class="price-container">
+                                <p class="item-price">R$ 18,00</p>
+                                <button type="button" class="btn-add-plus" aria-label="Adicionar Onion Rings ao carrinho" data-name="Onion Rings" data-price="18.00">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-details no-image">
+                            <h3>Batata Rústica com Alecrim</h3>
+                            <p class="item-description">Batatas cortadas em gomos, assadas com azeite e alecrim fresco.</p>
+                            <div class="price-container">
+                                <p class="item-price">R$ 17,00</p>
+                                <button type="button" class="btn-add-plus" aria-label="Adicionar Batata Rústica com Alecrim ao carrinho" data-name="Batata Rústica com Alecrim" data-price="17.00">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </section>
+             
+            <section class="menu-category">
+                <h2>Bebidas</h2>
+                <div class="menu-items-list">
+                    <div class="menu-item">
+                         <div class="menu-item-details no-image">
+                            <h3>Refrigerante Lata</h3>
+                            <p class="item-description">Coca-Cola, Guaraná Antarctica, Fanta Laranja, Sprite (350ml).</p>
+                            <div class="price-container">
+                                <p class="item-price">R$ 6,00</p>
+                                <button type="button" class="btn-add-plus" aria-label="Adicionar Refrigerante Lata ao carrinho" data-name="Refrigerante Lata" data-price="6.00">
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="menu-item">
+                        <div class="menu-item-details no-image">
+                           <h3>Suco Natural</h3>
+                           <p class="item-description">Laranja, Abacaxi com Hortelã, Maracujá (Copo 400ml).</p>
+                           <div class="price-container">
+                               <p class="item-price">R$ 9,00</p>
+                               <button type="button" class="btn-add-plus" aria-label="Adicionar Suco Natural ao carrinho" data-name="Suco Natural" data-price="9.00">
+                                   +
+                               </button>
+                           </div>
+                       </div>
+                   </div>
+                    <div class="menu-item">
+                        <div class="menu-item-details no-image">
+                           <h3>Milk Shake</h3>
+                           <p class="item-description">Chocolate, Morango, Ovomaltine (Copo 400ml).</p>
+                           <div class="price-container">
+                               <p class="item-price">R$ 18,00</p>
+                               <button type="button" class="btn-add-plus" aria-label="Adicionar Milk Shake ao carrinho" data-name="Milk Shake" data-price="18.00">
+                                   +
+                               </button>
+                           </div>
+                       </div>
+                   </div>
+                    <div class="menu-item">
+                        <div class="menu-item-details no-image">
+                           <h3>Água Mineral</h3>
+                           <p class="item-description">Com gás ou sem gás (500ml).</p>
+                           <div class="price-container">
+                               <p class="item-price">R$ 4,00</p>
+                               <button type="button" class="btn-add-plus" aria-label="Adicionar Água Mineral ao carrinho" data-name="Água Mineral" data-price="4.00">
+                                   +
+                               </button>
+                           </div>
+                       </div>
+                   </div>
+                 </div>
+            </section>
         </div>
     </main>
-
     <footer class="main-footer">
         <div class="container">
              <div class="footer-col footer-logo"><h3>THE BURGUER CO.</h3></div>
@@ -201,102 +271,126 @@
         </div>
     </footer>
 
-        <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-        <script defer src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="auth.js"></script>
 
-        <script>
-            window.addEventListener('load', () => {
-                    const firebaseConfig = {
-                        apiKey: "AIzaSyC92LK20GbKuIqJ34ol2gRXQ7HBaDo4Ojw",
-                        authDomain: "the-burger-co-site.firebaseapp.com",
-                        projectId: "the-burger-co-site",
-                        storageBucket: "the-burger-co-site.appspot.com",
-                        messagingSenderId: "264313917347",
-                        appId: "1:264313917347:web:6913602d31678a3d451416"
-                    };
-                    if (typeof firebase !== 'undefined') {
-                            firebase.initializeApp(firebaseConfig);
-                            const auth = firebase.auth();
+    <script>
+        (function(){
+            const CART_KEY = 'site_cart_v1';
+            function loadCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); }catch(e){return [];} }
+            function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); }
 
-                            const navCadastro = document.getElementById('nav-cadastro');
-                            const navLogin = document.getElementById('nav-login');
-                            const navUser = document.getElementById('nav-user');
-                            const navLogout = document.getElementById('nav-logout');
-                            const userEmailSpan = document.getElementById('user-email');
-                            const logoutButton = document.getElementById('logout-button');
+            // Toast helper
+            function ensureToastContainer(){ let c = document.querySelector('.site-toast-container'); if(!c){ c = document.createElement('div'); c.className = 'site-toast-container'; document.body.appendChild(c); } return c; }
+            function showToast(text, opts = {}){
+                const container = ensureToastContainer();
+                const toast = document.createElement('div');
+                toast.className = 'site-toast small' + (opts.type ? ' ' + opts.type : '');
+                toast.textContent = text;
+                container.appendChild(toast);
+                // Force reflow then show
+                requestAnimationFrame(()=> toast.classList.add('show'));
+                setTimeout(()=>{ toast.classList.remove('show'); setTimeout(()=> toast.remove(), 300); }, opts.duration || 2200);
+            }
 
-                            auth.onAuthStateChanged((user) => {
-                                if (user) {
-                                    userEmailSpan.textContent = `Olá, ${user.email}`;
-                                    if(navCadastro) navCadastro.style.display = 'none';
-                                    if(navLogin) navLogin.style.display = 'none';
-                                    if(navUser) navUser.style.display = 'list-item';
-                                    if(navLogout) navLogout.style.display = 'list-item';
-                                } else {
-                                    userEmailSpan.textContent = '';
-                                    if(navCadastro) navCadastro.style.display = 'list-item';
-                                    if(navLogin) navLogin.style.display = 'list-item';
-                                    if(navUser) navUser.style.display = 'none';
-                                    if(navLogout) navLogout.style.display = 'none';
-                                }
-                            });
+            function addItem(item){
+                const c = loadCart();
+                const existing = c.find(i=>i.name===item.name);
+                if(existing){ existing.qty = (existing.qty||0) + 1; } // Sempre adiciona 1 por clique
+                else { item.qty = 1; c.push(item); }
+                saveCart(c);
+                
+                // Trigger update for other tabs and header
+                try{ localStorage.setItem('site_cart_updated_at', Date.now().toString()); }catch(e){}
+                
+                // Atualiza contador no mesmo contexto (chama a função do script abaixo)
+                if (window.updateCartCount) try{ window.updateCartCount(); }catch(e){} 
+                
+                showToast(item.name + ' adicionado ao carrinho', { type: 'success', duration: 2200 });
+            }
 
-                                // Atualização do header a partir da autenticação local (se existir)
-                                function updateHeaderFromLocalAuthCardapio(){
-                                    const navCadastro = document.getElementById('nav-cadastro');
-                                    const navLogin = document.getElementById('nav-login');
-                                    const navUser = document.getElementById('nav-user');
-                                    const navLogout = document.getElementById('nav-logout');
-                                    const userEmailSpan = document.getElementById('user-email');
-                                    const logoutButton = document.getElementById('logout-button');
-                                    const token = localStorage.getItem('authToken');
-                                    const email = localStorage.getItem('authEmail');
-                                    if (token && email){
-                                        if(userEmailSpan) userEmailSpan.textContent = `Olá, ${email}`;
-                                        if(navCadastro) navCadastro.style.display = 'none';
-                                        if(navLogin) navLogin.style.display = 'none';
-                                        if(navUser) navUser.style.display = 'list-item';
-                                        if(navLogout) navLogout.style.display = 'list-item';
-                                        if (logoutButton) {
-                                            logoutButton.addEventListener('click', (e) => {
-                                                e.preventDefault();
-                                                localStorage.removeItem('authToken');
-                                                localStorage.removeItem('authEmail');
-                                                localStorage.removeItem('authName');
-                                                window.location.href = 'index.html';
-                                            });
-                                        }
-                                    }
-                                }
-                                document.addEventListener('DOMContentLoaded', updateHeaderFromLocalAuthCardapio);
+            // Delegate click on add buttons with "fly to cart" animation
+            document.addEventListener('click', (e)=>{
+                const btn = e.target.closest('.add-to-cart, .btn-add-plus');
+                if (!btn) return;
+                
+                const name = btn.dataset.name;
+                const price = parseFloat(btn.dataset.price)||0;
 
-                            if (logoutButton) {
-                                    logoutButton.addEventListener('click', (event) => {
-                                            event.preventDefault();
-                                            auth.signOut().then(() => {
-                                                    alert('Você saiu da sua conta.');
-                                                    window.location.href = 'index.html';
-                                            }).catch((error) => {
-                                                    console.error('Erro ao fazer logout:', error);
-                                                    alert('Erro ao sair: ' + error.message);
-                                            });
-                                    });
-                            }
-                    }
-            });
+                // pequeno feedback no botão
+                btn.setAttribute('aria-pressed','true');
+                btn.style.transform = 'translateY(-2px)';
+                setTimeout(()=>{ btn.removeAttribute('aria-pressed'); btn.style.transform = ''; }, 220);
 
-            // Toggle do menu móvel
-            document.addEventListener('DOMContentLoaded', () => {
-                const navToggle = document.getElementById('nav-toggle');
-                const primaryNav = document.getElementById('primary-navigation');
-                if (navToggle && primaryNav) {
-                    navToggle.addEventListener('click', () => {
-                        const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
-                        navToggle.setAttribute('aria-expanded', !expanded);
-                        primaryNav.classList.toggle('open');
+                const menuItem = btn.closest('.menu-item');
+                const srcImg = menuItem ? menuItem.querySelector('img') : null;
+                const cartAnchor = document.querySelector('#nav-cart a');
+
+                function doAdd(){ addItem({ name, price }); } // qty é definido dentro de addItem
+
+                if (srcImg && cartAnchor){
+                    const rect = srcImg.getBoundingClientRect();
+                    const clone = srcImg.cloneNode(true);
+                    clone.className = 'fly-img';
+                    // set initial position
+                    clone.style.left = rect.left + 'px';
+                    clone.style.top = rect.top + 'px';
+                    clone.style.width = rect.width + 'px';
+                    clone.style.height = rect.height + 'px';
+                    clone.style.transform = 'translate(0,0) scale(1)';
+                    document.body.appendChild(clone);
+
+                    // compute target (center of cart link)
+                    const targetRect = cartAnchor.getBoundingClientRect();
+                    const targetX = targetRect.left + targetRect.width/2 - rect.left - rect.width/2;
+                    const targetY = targetRect.top + targetRect.height/2 - rect.top - rect.height/2;
+
+                    // start animation
+                    requestAnimationFrame(()=>{
+                        clone.style.transform = `translate(${targetX}px, ${targetY}px) scale(0.25)`;
+                        clone.style.opacity = '0.35';
                     });
+
+                    clone.addEventListener('transitionend', ()=>{ try{ clone.remove(); }catch(e){} doAdd(); }, { once: true });
+
+                    // safety fallback: remove if still present after 1s
+                    setTimeout(()=>{ if(document.body.contains(clone)) { clone.remove(); doAdd(); } }, 1200);
+                } else {
+                    doAdd();
                 }
             });
-        </script>
+        })();
+    </script>
+
+    <script>
+        (function(){
+            function updateCart(){
+                try{
+                    const cart = JSON.parse(localStorage.getItem('site_cart_v1')||'[]');
+                    const c = cart.reduce((s,i)=>s+(i.qty||0),0);
+                    const el = document.getElementById('cart-count');
+                    if(el) el.textContent = c;
+                }catch(e){ /* ignore */ }
+            }
+            // expõe para outros scripts no mesmo documento
+            window.updateCartCount = updateCart;
+            updateCart();
+            window.addEventListener('storage', updateCart);
+            document.addEventListener('DOMContentLoaded', updateCart);
+        })();
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navToggle = document.getElementById('nav-toggle');
+            const primaryNav = document.getElementById('primary-navigation');
+            if (navToggle && primaryNav) {
+                navToggle.addEventListener('click', () => {
+                    const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+                    navToggle.setAttribute('aria-expanded', !expanded);
+                    primaryNav.classList.toggle('open');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

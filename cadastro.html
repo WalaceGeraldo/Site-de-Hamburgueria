@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - The Burguer co.</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header class="main-header">
         <div class="container">
             <h1 class="logo">The Burguer co.</h1>
-            <nav class="main-nav">
+            <nav class="main-nav" id="primary-navigation">
                  <ul>
                     <li><a href="index.html">Início</a></li>
                     <li><a href="cardapio.html">Cardápio</a></li>
                     <li id="nav-cadastro"><a href="cadastro.html">Cadastro</a></li>
                     <li id="nav-login"><a href="login.html" class="btn-login">Login</a></li>
-                    <li id="nav-user" style="display: none;"><span id="user-email" style="color: #ccc; margin-right: 15px;"></span></li>
+                    <li id="nav-account" style="display: none;"><a href="minha-conta.html">Minha Conta</a></li>
+                    <li id="nav-user" style="display: none;"><a href="minha-conta.html" id="user-email" style="color: #d9a040; margin-right: 15px;"></a></li>
                     <li id="nav-logout" style="display: none;"><a href="#" id="logout-button" class="btn-logout">Sair</a></li>
+                    <li id="nav-cart"><a href="cart.html" class="btn-cart"><img src="imagens/carrinho.png" alt="Carrinho" style="width: 24px; height: 24px; vertical-align: middle;margin-top: 5px;"></a></li>
                 </ul>
             </nav>
         </div>
@@ -40,23 +43,16 @@
                     </div>
                     <div class="form-group-cadastro">
                         <label for="senha-cadastro">Senha:</label>
-                        <input type="password" id="senha-cadastro" name="senha-cadastro" required>
+                        <input type="password" id="senha-cadastro" name="senha-cadastro" minlength="6" required>
                     </div>
                     <div class="form-group-cadastro">
                         <label for="confirmar-senha">Confirmar Senha:</label>
-                        <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+                        <input type="password" id="confirmar-senha" name="confirmar-senha" minlength="6" required>
                     </div>
                     <button type="submit" class="btn-cadastro">Cadastrar</button>
                 </form>
 
-                 <div class="divider"><span>OU</span></div>
-
-                 <button type="button" class="btn-google" id="btnGoogleSignIn">
-                     <img src="imagens/icon-google.png" alt="Google icon">
-                     Entrar com Google
-                 </button>
-
-                <p class="login-link">
+                <p class="login-link" style="margin-top: 30px;">
                     Já tem uma conta? <a href="login.html">Faça login</a>
                 </p>
             </div>
@@ -72,151 +68,63 @@
         </div>
     </footer>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="auth.js"></script>
 
     <script>
-      // --- SUA CONFIGURAÇÃO FIREBASE ---
-      const firebaseConfig = {
-        apiKey: "AIzaSyC92LK20GbKuIqJ34ol2gRXQ7HBaDo4Ojw", // CONFIRA SE ESTÁ CORRETO
-        authDomain: "the-burger-co-site.firebaseapp.com", // CONFIRA SE ESTÁ CORRETO
-        projectId: "the-burger-co-site", // CONFIRA SE ESTÁ CORRETO
-        storageBucket: "the-burger-co-site.appspot.com", // CONFIRA SE ESTÁ CORRETO
-        messagingSenderId: "264313917347", // CONFIRA SE ESTÁ CORRETO
-        appId: "1:264313917347:web:6913602d31678a3d451416" // CONFIRA SE ESTÁ CORRETO
-      };
-      // --- FIM DA CONFIGURAÇÃO ---
+      const cadastroForm = document.getElementById('cadastroForm');
+      if (cadastroForm) {
+        cadastroForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          const name = document.getElementById('nome-completo').value;
+          const email = document.getElementById('email-cadastro').value;
+          const senha = document.getElementById('senha-cadastro').value;
+          const confirmarSenha = document.getElementById('confirmar-senha').value;
 
-      try {
-          // Inicializar Firebase
-          firebase.initializeApp(firebaseConfig);
-          const auth = firebase.auth();
-          const googleProvider = new firebase.auth.GoogleAuthProvider();
+          if (senha !== confirmarSenha) { alert("As senhas não coincidem!"); return; }
+          if (senha.length < 6) { alert("A senha deve ter pelo menos 6 caracteres."); return; }
 
-                    // --- Lógica do Formulário de Cadastro (Email/Senha) ---
-                    const cadastroForm = document.getElementById('cadastroForm');
-                    if (cadastroForm) {
-                            cadastroForm.addEventListener('submit', async (event) => {
-                                    event.preventDefault();
-                                    const name = document.getElementById('nome-completo').value;
-                                    const email = document.getElementById('email-cadastro').value;
-                                    const senha = document.getElementById('senha-cadastro').value;
-                                    const confirmarSenha = document.getElementById('confirmar-senha').value;
-
-                                    if (senha !== confirmarSenha) { alert("As senhas não coincidem!"); return; }
-                                    if (senha.length < 6) { alert("A senha deve ter pelo menos 6 caracteres."); return; }
-
-                                    // Tentar registrar no servidor local primeiro
-                                    try {
-                                            const resp = await fetch('/api/register', {
-                                                    method: 'POST',
-                                                    headers: { 'Content-Type': 'application/json' },
-                                                    body: JSON.stringify({ name, email, password: senha })
-                                            });
-                                            const data = await resp.json();
-                                            if (resp.ok && data.success) {
-                                                    // salvar token localmente e redirecionar
-                                                    localStorage.setItem('authToken', data.token);
-                                                    localStorage.setItem('authEmail', data.email);
-                                                    if (data.name) localStorage.setItem('authName', data.name);
-                                                    alert('Cadastro realizado com sucesso! (servidor local)');
-                                                    window.location.href = 'index.html';
-                                                    return;
-                                            } else {
-                                                    // Se servidor respondeu com erro conhecido, mostrar mensagem
-                                                    console.warn('Registro local retornou erro:', data);
-                                                    if (data && data.message) alert('Erro no registro local: ' + data.message);
-                                                    // fallback para Firebase abaixo
-                                            }
-                                    } catch (e) {
-                                            console.warn('Servidor local não disponível, tentando Firebase...', e);
-                                            // fallback para Firebase
-                                    }
-
-                                    // Fallback: registrar com Firebase se disponível
-                                    try {
-                                            auth.createUserWithEmailAndPassword(email, senha)
-                                                .then((userCredential) => {
-                                                    alert('Cadastro realizado com sucesso (Firebase)!');
-                                                    window.location.href = 'login.html';
-                                                })
-                                                .catch((error) => {
-                                                    console.error('Erro no cadastro (Firebase):', error.code, error.message);
-                                                    if (error.code === 'auth/email-already-in-use') { alert('Este e-mail já está cadastrado.'); }
-                                                    else if (error.code === 'auth/weak-password') { alert('A senha deve ter pelo menos 6 caracteres.'); }
-                                                    else { alert('Erro ao cadastrar: ' + error.message); }
-                                                });
-                                    } catch (e) {
-                                            console.error('Erro ao tentar registrar:', e);
-                                            alert('Erro ao tentar registrar. Verifique o console.');
-                                    }
-                            });
-                    }
-
-          // --- Lógica do Login com Google (no cadastro) ---
-          const btnGoogleSignIn = document.getElementById('btnGoogleSignIn');
-          if (btnGoogleSignIn) {
-              btnGoogleSignIn.addEventListener('click', () => {
-                  auth.signInWithPopup(googleProvider)
-                    .then((result) => {
-                      alert('Login com Google realizado com sucesso!');
-                      window.location.href = 'index.html';
-                    }).catch((error) => {
-                      console.error('Erro no login com Google (cadastro):', error.code, error.message);
-                      if (error.code !== 'auth/popup-closed-by-user') { alert('Erro ao tentar login com Google: ' + error.message); }
-                    });
-              });
-          }
-
-          // --- LÓGICA PARA ATUALIZAR O CABEÇALHO (ESSENCIAL!) ---
-          const navCadastro = document.getElementById('nav-cadastro');
-          const navLogin = document.getElementById('nav-login');
-          const navUser = document.getElementById('nav-user');
-          const navLogout = document.getElementById('nav-logout');
-          const userEmailSpan = document.getElementById('user-email');
-          const logoutButton = document.getElementById('logout-button');
-
-          auth.onAuthStateChanged((user) => {
-            console.log("Auth state changed on cadastro.html:", user); // Log para depuração
-            if (user) {
-              // Usuário está logado
-              userEmailSpan.textContent = `Olá, ${user.email}`;
-              if(navCadastro) navCadastro.style.display = 'none';
-              if(navLogin) navLogin.style.display = 'none';
-              if(navUser) navUser.style.display = 'list-item';
-              if(navLogout) navLogout.style.display = 'list-item';
+          // Tentar registrar no servidor local
+          try {
+            const resp = await fetch('http://localhost:3000/api/register', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ name, email, password: senha })
+            });
+            const data = await resp.json();
+            
+            if (resp.ok && data.success) {
+              // Usa a função do auth.js para salvar o token e logar
+              window.doLogin(data.token, data.email, data.name);
+              
+              alert('Cadastro realizado com sucesso!');
+              // Redireciona para a página de conta
+              window.location.href = 'minha-conta.html'; 
+              return;
             } else {
-              // Usuário está deslogado
-              userEmailSpan.textContent = '';
-              if(navCadastro) navCadastro.style.display = 'list-item';
-              if(navLogin) navLogin.style.display = 'list-item';
-              if(navUser) navUser.style.display = 'none';
-              if(navLogout) navLogout.style.display = 'none';
+              alert('Erro no registro: ' + (data.message || 'Não foi possível cadastrar'));
             }
-          });
-
-          // Lógica do botão Sair (ESSENCIAL!)
-          if (logoutButton) {
-              logoutButton.addEventListener('click', (event) => {
-                  event.preventDefault();
-                  auth.signOut().then(() => {
-                      alert('Você saiu da sua conta.');
-                      // O onAuthStateChanged vai atualizar o header automaticamente
-                      // Opcional: redirecionar, mas já estamos no cadastro... talvez para home?
-                       window.location.href = 'index.html';
-                  }).catch((error) => {
-                      console.error('Erro ao fazer logout:', error);
-                      alert('Erro ao sair: ' + error.message);
-                  });
-              });
+          } catch (e) {
+            console.error('Servidor local não disponível:', e);
+            alert('Não foi possível conectar ao servidor. Tente novamente mais tarde.');
           }
-          // --- FIM DA LÓGICA DO CABEÇALHO ---
-
-      } catch (e) {
-          console.error("Erro ao inicializar Firebase ou configurar listeners em cadastro.html:", e);
-          alert("Ocorreu um erro crítico na página de cadastro. Verifique o console.");
+        });
       }
-
+    </script>
+    
+    <script>
+        (function(){
+            function updateCart(){
+                try{ 
+                    const cart = JSON.parse(localStorage.getItem('site_cart_v1')||'[]'); 
+                    const count = cart.reduce((s,i)=>s+(i.qty||0),0); 
+                    const el = document.getElementById('cart-count'); 
+                    if(el) el.textContent = count; 
+                }catch(e){}
+            }
+            updateCart();
+            window.addEventListener('storage', updateCart);
+            document.addEventListener('DOMContentLoaded', updateCart);
+        })();
     </script>
 </body>
 </html>
