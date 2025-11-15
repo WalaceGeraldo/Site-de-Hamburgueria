@@ -22,20 +22,30 @@
       console.error('Falha no registro:', regJson);
     }
 
-    console.log('Tentando login com o mesmo usuário...');
-    const loginRes = await fetch(`${base}/api/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password })
-    });
-    const loginJson = await loginRes.json();
-    console.log('/api/login ->', loginRes.status, JSON.stringify(loginJson));
+  console.log('Tentando login com o mesmo usuário...');
+  const loginRes = await fetch(`${base}/api/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  });
+  const loginJson = await loginRes.json();
+  console.log('/api/login ->', loginRes.status, JSON.stringify(loginJson));
 
-    if (loginRes.ok) {
-      console.log('Login OK. Token:', loginJson.token ? loginJson.token.slice(0,20) + '...' : 'nenhum');
-    } else {
-      console.error('Falha no login:', loginJson);
+  if (loginRes.ok) {
+    console.log('Login OK. Token:', loginJson.token ? loginJson.token.slice(0,20) + '...' : 'nenhum');
+
+    try {
+      const ordersRes = await fetch(`${base}/api/orders`, {
+        headers: { Authorization: `Bearer ${loginJson.token}` }
+      });
+      const ordersJson = await ordersRes.json();
+      console.log('/api/orders ->', ordersRes.status, JSON.stringify(ordersJson));
+    } catch (e) {
+      console.error('Falha ao consultar pedidos:', e.message || e);
     }
+  } else {
+    console.error('Falha no login:', loginJson);
+  }
   } catch (e) {
     console.error('Erro de conexão ou execução:', e.message || e);
   }

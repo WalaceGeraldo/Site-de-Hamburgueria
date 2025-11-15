@@ -159,6 +159,9 @@ body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: #f4f4
 .register-link a:hover { text-decoration: underline; }
 .login-form-container .btn-google { margin-top: 0; }
 
+.account-avatar { display:flex; flex-direction: column; align-items:center; gap:8px; }
+.avatar-wrapper{ width:104px; height:104px; border-radius:50%; background:#fff; position:relative; overflow:hidden; box-shadow: 0 10px 24px rgba(0,0,0,0.12); border:4px solid #fff; }
+
 /* --- Estilos da Página do Cardápio --- */
 .cardapio-section { padding: 60px 0; background-color: #fff; }
 .page-title { text-align: center; color: #333; font-family: 'Oswald', sans-serif; font-size: 42px; text-transform: uppercase; margin: 0 0 50px 0; letter-spacing: 1px; }
@@ -280,6 +283,9 @@ body{background:var(--bg);color:var(--text);padding-top:72px}
 .site-toast.show{ opacity:1; transform: translateY(0) scale(1); }
 .site-toast.success{ background: linear-gradient(90deg, #2ecc71 0%, #27ae60 100%); color:#fff; }
 .site-toast.small{ font-size:14px; }
+
+.btn-print-order{ display:inline-block; background:#525252; color:#fff; padding:8px 12px; border:none; border-radius:6px; font-size:12px; font-weight:700; text-transform:uppercase; cursor:pointer; transition: background-color .2s ease, transform .12s ease; }
+.btn-print-order:hover{ background:#464646; transform: translateY(-1px); }
 
 /* --- Ícone dentro do botão e animação voa-para-o-carrinho --- */
 .add-to-cart .btn-icon{ width:14px; height:14px; vertical-align:middle; margin-right:8px; display:inline-block; fill:#000; }

@@ -62,59 +62,7 @@
     </footer>
 
     <script src="auth.js"></script>
-
-    <script>
-      const loginForm = document.getElementById('loginForm');
-      if (loginForm) {
-        loginForm.addEventListener('submit', async (event) => {
-          event.preventDefault();
-          const email = document.getElementById('email-login').value;
-          const senha = document.getElementById('senha-login').value;
-          if (!email || !senha) { alert('Por favor, preencha o email e a senha.'); return; }
-
-          // Tentar login no servidor local
-          try {
-            const resp = await fetch('http://localhost:3000/api/login', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ email, password: senha })
-            });
-            const data = await resp.json();
-
-            if (resp.ok && data.success) {
-              // Chama a função global do auth.js para salvar os dados
-              window.doLogin(data.token, data.email, data.name);
-              
-              alert('Login realizado com sucesso!');
-              // Redireciona para a página de conta
-              window.location.href = 'minha-conta.html'; 
-              return;
-            } else {
-              alert('Erro no login: ' + (data.message || 'Credenciais inválidas'));
-            }
-          } catch (e) {
-            console.error('Servidor local não disponível:', e);
-            alert('Não foi possível conectar ao servidor. Tente novamente mais tarde.');
-          }
-        });
-      }
-    </script>
-    
-    <script>
-        (function(){
-            function updateCart(){
-                try{ 
-                    const cart = JSON.parse(localStorage.getItem('site_cart_v1')||'[]'); 
-                    const count = cart.reduce((s,i)=>s+(i.qty||0),0); 
-                    const el = document.getElementById('cart-count'); 
-                    if(el) el.textContent = count; 
-                }catch(e){}
-            }
-            updateCart();
-            window.addEventListener('storage', updateCart);
-            // Garante que rode também no DOMContentLoaded caso o auth.js seja mais rápido
-            document.addEventListener('DOMContentLoaded', updateCart);
-        })();
-    </script>
+    <script src="login-script.js"></script>
+    <script src="cart-counter.js"></script>
 </body>
 </html>

@@ -1,3 +1,9 @@
 node_modules/
 users.db
+*.sqlite
+*.db
+*.db-journal
+*.log
+uploads/
+users.db
 .env

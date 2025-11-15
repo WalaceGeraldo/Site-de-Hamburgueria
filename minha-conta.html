@@ -33,9 +33,9 @@
         <div class="container">
             <div class="account-hero">
                 <div class="account-avatar">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
-                    </svg>
+                    
+               
+                    
                 </div>
                 <div class="account-hero-info">
                     <h1 class="account-welcome" id="welcome">Carregando...</h1>
@@ -56,17 +56,18 @@
                 </div>
 
                 <div class="account-main">
-                    <div class="account-info" id="userInfo" style="display:none; background: #fdfdfd; border: 1px solid #eee; border-radius: 16px;">
+                    <div class="account-info" id="userInfo" style="display:none; background: #fdfdfd; border: 1px solid #eee; border-radius: 16px; padding: 30px; margin-bottom: 30px;">
                         <h2 style="font-size: 20px; font-family: 'Oswald', sans-serif; margin-bottom: 15px;">Detalhes da Conta</h2>
                         <p style="font-size: 16px; color: #555; margin: 10px 0;"><strong>Nome:</strong> <span id="userName">-</span></p>
                         <p style="font-size: 16px; color: #555; margin: 10px 0;"><strong>Email:</strong> <span id="userEmail">-</span></p>
                         <p style="font-size: 16px; color: #555; margin: 10px 0;"><strong>Membro desde:</strong> <span id="userCreated">-</span></p>
                     </div>
 
-                    <div class="order-history" id="pedidos" style="margin-top: 30px;">
+                    <div class="order-history" id="pedidos">
                         <div class="section-header">
                             <h2>Histórico de Pedidos</h2>
                             <a href="cardapio.html" class="btn-new-order">+ Novo Pedido</a>
+                            <button id="print-all-orders" class="btn-print-order" style="margin-left: 10px;">Imprimir Todos</button>
                         </div>
                         <div id="orders-list">
                             <p>Carregando pedidos...</p>
@@ -87,139 +88,6 @@
     </footer>
 
     <script src="auth.js"></script>
-
-    <script>
-        // Verifica token em localStorage e consulta /api/me
-        (async () => {
-          // auth.js já cuidou do header, mas precisamos do token para o fetch
-          const token = localStorage.getItem('authToken');
-          if (!token) {
-            // Se auth.js falhou (improvável), este é um fallback
-            window.location.href = 'login.html';
-            return;
-          }
-
-          // --- CARREGAR DADOS DO USUÁRIO (/api/me) ---
-          try {
-            const res = await fetch('/api/me', {
-              headers: { 'Authorization': 'Bearer ' + token }
-            });
-            const j = await res.json();
-            if (!res.ok || !j.success) {
-              // Token inválido, o auth.js já deve ter tratado, mas fazemos logout por segurança
-              window.doLogout(); 
-              return;
-            }
-
-            // Mostrar dados do usuário
-            const user = j.user;
-            document.getElementById('welcome').textContent = `Olá, ${user.name || user.email}!`;
-            document.getElementById('account-email').textContent = user.email;
-            document.getElementById('userName').textContent = user.name || '-';
-            document.getElementById('userEmail').textContent = user.email;
-            document.getElementById('userCreated').textContent = new Date(user.created_at).toLocaleDateString('pt-BR');
-            document.getElementById('userInfo').style.display = 'block';
-            
-          } catch (e) {
-            console.error('Erro ao verificar token:', e);
-            window.doLogout(); // Se a API falhar, desloga
-          }
-        })();
-
-        // --- CARREGAR PEDIDOS (/api/orders) ---
-        (async function loadOrders(){
-          const token = localStorage.getItem('authToken');
-          const target = document.getElementById('orders-list');
-          if (!token) { target.innerHTML = '<em>Faça login para ver seus pedidos.</em>'; return; }
-          
-          try{
-            const res = await fetch('/api/orders', { headers: { 'Authorization': 'Bearer '+token } });
-            const j = await res.json();
-            if (!res.ok || !j.success) { target.innerHTML = '<em>Não foi possível carregar pedidos.</em>'; return; }
-            if (!j.orders || !j.orders.length) { 
-              target.innerHTML = `
-                <div class="no-orders-message" style="display:flex; flex-direction: column; align-items: center; padding: 40px 0;">
-                    <span class="no-orders-icon" style="font-size: 64px; opacity: 0.5;">📋</span>
-                    <span>Você ainda não fez nenhum pedido.</span>
-                </div>`; 
-              return; 
-            }
-
-            // Renderizar os cards de pedido (usando o estilo do seu CSS)
-            target.innerHTML = ''; // Limpa o "Carregando..."
-            
-            j.orders.forEach(order => {
-              const card = document.createElement('div');
-              card.className = 'order-card';
-
-              const itemsHTML = order.items.map(it => 
-                `<div class="order-item-info" style="display:flex; justify-content: space-between; font-size: 15px; color: #333; padding: 4px 0;">
-                   <span class="order-item-name">${it.qty}x ${it.name}</span>
-                   <span>R$ ${(it.price * it.qty).toFixed(2)}</span>
-                 </div>`
-              ).join('');
-
-              const address = order.address || {};
-              const addressHTML = `
-                <p class="order-payment" style="font-size: 14px; color: #555; margin-top: 15px; padding-top: 10px; border-top: 1px solid #eee;">
-                  <strong>Endereço:</strong> ${address.street || 'N/A'}, ${address.number || 'N/A'} - ${address.neighborhood || 'N/A'}
-                </p>`;
-                
-              const paymentMap = {'pix': 'PIX', 'card': 'Cartão', 'cash': 'Dinheiro'};
-              const paymentText = paymentMap[order.paymentMethod] || order.paymentMethod;
-
-              card.innerHTML = `
-                <div class="order-header">
-                  <div>
-                    <h3>Pedido #${order.id}</h3>
-                    <p class="order-date">${new Date(order.created_at).toLocaleString('pt-BR')}</p>
-                  </div>
-                  <span class="status-badge pending">Pendente</span>
-                </div>
-                <div class="order-items" style="margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #eee;">
-                  ${itemsHTML}
-                </div>
-                ${addressHTML}
-                <div class="order-footer">
-                  <p class="order-payment">
-                    <strong>Pagamento:</strong> ${paymentText}
-                  </p>
-                  <p class="order-total" style="text-align: right;">
-                    Total: <strong>R$ ${Number(order.total).toFixed(2)}</strong>
-                  </p>
-                </div>
-              `;
-              target.appendChild(card);
-            });
-
-          }catch(e){ 
-            console.error("Erro ao carregar pedidos:", e);
-            target.innerHTML = '<em>Erro ao carregar pedidos.</em>'; 
-          }
-        })();
-        
-        // --- ATUALIZAR CONTADOR DO CARRINHO ---
-        (function(){
-            function updateCart(){
-                try{ const cart = JSON.parse(localStorage.getItem('site_cart_v1')||'[]'); const count = cart.reduce((s,i)=>s+(i.qty||0),0); const el = document.getElementById('cart-count'); if(el) el.textContent = count; }catch(e){}
-            }
-            updateCart();
-            window.addEventListener('storage', updateCart);
-            document.addEventListener('DOMContentLoaded', updateCart);
-        })();
-
-        // --- MENU MOBILE ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.getElementById('nav-toggle');
-            const primaryNav = document.getElementById('primary-navigation');
-            if (navToggle && primaryNav) {
-                navToggle.addEventListener('click', () => {
-                    const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
-                    navToggle.setAttribute('aria-expanded', !expanded);
-                    primaryNav.classList.toggle('open');
-                });
-            }
-        });
-    </script>
+    <script src="minha-conta-script.js"></script>
 </body>
 </html>

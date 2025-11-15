@@ -262,6 +262,7 @@
             </section>
         </div>
     </main>
+    
     <footer class="main-footer">
         <div class="container">
              <div class="footer-col footer-logo"><h3>THE BURGUER CO.</h3></div>
@@ -272,125 +273,7 @@
     </footer>
 
     <script src="auth.js"></script>
-
-    <script>
-        (function(){
-            const CART_KEY = 'site_cart_v1';
-            function loadCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)||'[]'); }catch(e){return [];} }
-            function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); }
-
-            // Toast helper
-            function ensureToastContainer(){ let c = document.querySelector('.site-toast-container'); if(!c){ c = document.createElement('div'); c.className = 'site-toast-container'; document.body.appendChild(c); } return c; }
-            function showToast(text, opts = {}){
-                const container = ensureToastContainer();
-                const toast = document.createElement('div');
-                toast.className = 'site-toast small' + (opts.type ? ' ' + opts.type : '');
-                toast.textContent = text;
-                container.appendChild(toast);
-                // Force reflow then show
-                requestAnimationFrame(()=> toast.classList.add('show'));
-                setTimeout(()=>{ toast.classList.remove('show'); setTimeout(()=> toast.remove(), 300); }, opts.duration || 2200);
-            }
-
-            function addItem(item){
-                const c = loadCart();
-                const existing = c.find(i=>i.name===item.name);
-                if(existing){ existing.qty = (existing.qty||0) + 1; } // Sempre adiciona 1 por clique
-                else { item.qty = 1; c.push(item); }
-                saveCart(c);
-                
-                // Trigger update for other tabs and header
-                try{ localStorage.setItem('site_cart_updated_at', Date.now().toString()); }catch(e){}
-                
-                // Atualiza contador no mesmo contexto (chama a função do script abaixo)
-                if (window.updateCartCount) try{ window.updateCartCount(); }catch(e){} 
-                
-                showToast(item.name + ' adicionado ao carrinho', { type: 'success', duration: 2200 });
-            }
-
-            // Delegate click on add buttons with "fly to cart" animation
-            document.addEventListener('click', (e)=>{
-                const btn = e.target.closest('.add-to-cart, .btn-add-plus');
-                if (!btn) return;
-                
-                const name = btn.dataset.name;
-                const price = parseFloat(btn.dataset.price)||0;
-
-                // pequeno feedback no botão
-                btn.setAttribute('aria-pressed','true');
-                btn.style.transform = 'translateY(-2px)';
-                setTimeout(()=>{ btn.removeAttribute('aria-pressed'); btn.style.transform = ''; }, 220);
-
-                const menuItem = btn.closest('.menu-item');
-                const srcImg = menuItem ? menuItem.querySelector('img') : null;
-                const cartAnchor = document.querySelector('#nav-cart a');
-
-                function doAdd(){ addItem({ name, price }); } // qty é definido dentro de addItem
-
-                if (srcImg && cartAnchor){
-                    const rect = srcImg.getBoundingClientRect();
-                    const clone = srcImg.cloneNode(true);
-                    clone.className = 'fly-img';
-                    // set initial position
-                    clone.style.left = rect.left + 'px';
-                    clone.style.top = rect.top + 'px';
-                    clone.style.width = rect.width + 'px';
-                    clone.style.height = rect.height + 'px';
-                    clone.style.transform = 'translate(0,0) scale(1)';
-                    document.body.appendChild(clone);
-
-                    // compute target (center of cart link)
-                    const targetRect = cartAnchor.getBoundingClientRect();
-                    const targetX = targetRect.left + targetRect.width/2 - rect.left - rect.width/2;
-                    const targetY = targetRect.top + targetRect.height/2 - rect.top - rect.height/2;
-
-                    // start animation
-                    requestAnimationFrame(()=>{
-                        clone.style.transform = `translate(${targetX}px, ${targetY}px) scale(0.25)`;
-                        clone.style.opacity = '0.35';
-                    });
-
-                    clone.addEventListener('transitionend', ()=>{ try{ clone.remove(); }catch(e){} doAdd(); }, { once: true });
-
-                    // safety fallback: remove if still present after 1s
-                    setTimeout(()=>{ if(document.body.contains(clone)) { clone.remove(); doAdd(); } }, 1200);
-                } else {
-                    doAdd();
-                }
-            });
-        })();
-    </script>
-
-    <script>
-        (function(){
-            function updateCart(){
-                try{
-                    const cart = JSON.parse(localStorage.getItem('site_cart_v1')||'[]');
-                    const c = cart.reduce((s,i)=>s+(i.qty||0),0);
-                    const el = document.getElementById('cart-count');
-                    if(el) el.textContent = c;
-                }catch(e){ /* ignore */ }
-            }
-            // expõe para outros scripts no mesmo documento
-            window.updateCartCount = updateCart;
-            updateCart();
-            window.addEventListener('storage', updateCart);
-            document.addEventListener('DOMContentLoaded', updateCart);
-        })();
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const navToggle = document.getElementById('nav-toggle');
-            const primaryNav = document.getElementById('primary-navigation');
-            if (navToggle && primaryNav) {
-                navToggle.addEventListener('click', () => {
-                    const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
-                    navToggle.setAttribute('aria-expanded', !expanded);
-                    primaryNav.classList.toggle('open');
-                });
-            }
-        });
-    </script>
+    <script src="cardapio-cart.js"></script>
+    <script src="cart-counter.js"></script>
 </body>
 </html>
